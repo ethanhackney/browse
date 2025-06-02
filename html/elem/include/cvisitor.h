@@ -8,6 +8,8 @@ class html_internal_elem; // internal element
 // abstract const html element visitor
 class html_elem_cvisitor {
 public:
+        virtual ~html_elem_cvisitor() {}
+
         /**
          * visit <html> element:
          *
@@ -29,17 +31,6 @@ public:
          *  none
          */
         virtual void visit(const html_text_elem &elem) = 0;
-
-        /**
-         * visit internal element:
-         *
-         * args:
-         *  @elem: internal element
-         *
-         * ret:
-         *  none
-         */
-        virtual void visit(const html_internal_elem &elem) = 0;
 };
 
 #endif // HTML_ELEM_CVISITOR_H

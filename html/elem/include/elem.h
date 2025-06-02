@@ -4,6 +4,7 @@
 #include "cvisitor.h"
 #include "visitor.h"
 #include <cstdlib>
+#include <memory>
 
 // abstract html element
 class html_elem {
@@ -33,15 +34,37 @@ public:
         virtual void visit(html_elem_cvisitor &v) const = 0;
 
         /**
+         * get number of children: 
+         *
+         * args:
+         *  none
+         *
+         * ret:
+         *  number of children
+         */
+        virtual std::size_t child_len(void) const = 0;
+
+        /**
          * get a child element:
          *
          * args:
          *  @i: index of child
          *
          * ret:
-         *  none
+         *  pointer to html_elem
          */
-        virtual html_elem *get_child(std::size_t i) const = 0;
+        virtual std::shared_ptr<html_elem> &get_child(std::size_t i) = 0;
+
+        /**
+         * get a constant child element:
+         *
+         * args:
+         *  @i: index of child
+         *
+         * ret:
+         *  pointer to html_elem
+         */
+        virtual const std::shared_ptr<html_elem> &get_cchild(std::size_t i) const = 0;
 
         /**
          * append a child element:
@@ -52,7 +75,7 @@ public:
          * ret:
          *  none
          */
-        virtual void add_append_child(html_elem *elem) = 0;
+        virtual void append_child(std::shared_ptr<html_elem> &elem) = 0;
 
         /**
          * remove a child element:

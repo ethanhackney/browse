@@ -21,9 +21,12 @@ LDFLAGS = $(shell pkg-config --libs cairo x11)
 SFLAGS = $(CFLAGS) -fsanitize=address,undefined
 SLDFLAGS = $(LDFLAGS) -fsanitize=address,undefined
 
-ELEM_SRC = elem/src/internal.cc elem/src/text.cc elem/src/html.cc
+ELEM_SRC = elem/src/internal.cc \
+	   elem/src/text.cc \
+	   elem/src/html.cc \
+	   elem/src/dump.cc
 
-safe: yy.o tags.h $(ELEM_SRC)
+safe: yy.o $(ELEM_SRC)
 	g++ -std=c++11 $(SFLAGS) -o slow $(ELEM_SRC) main.cc yy.o $(SLDFLAGS)
 	rm yy.o
 
@@ -34,9 +37,9 @@ lex.yy.c: genlex.sh tagtab
 	./genlex.sh
 	flex html.l
 
-fast: yy.o tags.h
-	g++ --std=c++11 $(CFLAGS) -o fast -O3 main.cc yy.o $(LDFLAGS)
+fast: yy.o $(ELEM_SRC)
+	g++ --std=c++11 $(CFLAGS) -o fast -O3 $(ELEM_SRC) main.cc yy.o $(LDFLAGS)
 	rm yy.o
 
 clean:
-	rm -f slow fast yy.o lex.yy.c tags.h
+	rm -f slow fast yy.o lex.yy.c

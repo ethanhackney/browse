@@ -7,14 +7,14 @@
 // html internal element
 class html_internal_elem : public html_elem {
 private:
-        std::vector<html_elem *> _kids {}; // child elements
+        std::vector<std::shared_ptr<html_elem>> _kids;
 public:
         html_internal_elem();
         ~html_internal_elem();
-        void visit(html_elem_visitor &v);
-        void visit(html_elem_cvisitor &v) const;
-        html_elem *get_child(size_t i) const;
-        void add_append_child(html_elem *elem);
+        std::size_t child_len(void) const;
+        std::shared_ptr<html_elem> &get_child(size_t i);
+        const std::shared_ptr<html_elem> &get_cchild(std::size_t i) const;
+        void append_child(std::shared_ptr<html_elem> &elem);
         void rm_child(size_t i);
 };
 
