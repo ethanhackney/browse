@@ -1,19 +1,19 @@
-# where to write console messages?
+# dev console
 console
 
-# WebSocket Protocol: RFC 6455
+# WebSocket Protocol: https://www.rfc-editor.org/rfc/rfc6455.html
 web socket
 
-# http client
-http client
+# HTTP/3: https://www.rfc-editor.org/rfc/rfc9114.html
+HTTP client
 
 # HTML5 compiler: https://html.spec.whatwg.org/multipage/
-html compiler
+HTML compiler
 
 # css compiler: https://www.w3.org/TR/css-2024/#css-official 
-css compiler
+CSS compiler
 
-# renderer
+# graphics
 renderer
 
 # js interpreter: https://262.ecma-international.org/
