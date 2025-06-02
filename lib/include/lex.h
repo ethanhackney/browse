@@ -9,6 +9,7 @@
 #include <vector>
 #include <regex.h>
 
+// lexical analyzer
 namespace lex {
 
 // lex token types
@@ -59,7 +60,7 @@ using pattern_list = std::vector<token_pattern>;
 // reject list
 using reject_list = std::vector<unsigned char>;
 
-// abstract lexer
+// lexer
 class lex {
 private:
         std::bitset<UCHAR_MAX+1>  _rej; // reject list
