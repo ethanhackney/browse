@@ -53,7 +53,7 @@ public:
          * ret:
          *  pointer to html_elem
          */
-        virtual std::shared_ptr<html_elem> &get_child(std::size_t i) = 0;
+        virtual std::shared_ptr<html_elem> get_child(std::size_t i) = 0;
 
         /**
          * get a constant child element:
@@ -64,7 +64,7 @@ public:
          * ret:
          *  pointer to html_elem
          */
-        virtual const std::shared_ptr<html_elem> &get_cchild(std::size_t i) const = 0;
+        virtual const std::shared_ptr<html_elem> get_cchild(std::size_t i) const = 0;
 
         /**
          * append a child element:
@@ -75,7 +75,7 @@ public:
          * ret:
          *  none
          */
-        virtual void append_child(std::shared_ptr<html_elem> &elem) = 0;
+        virtual void append_child(std::shared_ptr<html_elem> elem) = 0;
 
         /**
          * remove a child element:

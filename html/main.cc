@@ -2,6 +2,7 @@
 #include "elem/include/html.h"
 #include "elem/include/dump.h"
 #include "html.h"
+#include "elem/include/factory.h"
 #include <iostream>
 #include <exception>
 #include <unordered_map>
@@ -143,6 +144,7 @@ static const std::unordered_map<int,int> enders {
 
 int main(void)
 {
+        html_elem_factory f;
         auto tt = 0;
 
         while ((tt = yylex()) && !is_err(tt)) {
@@ -150,15 +152,13 @@ int main(void)
                         continue;
 
                 try {
-                        std::shared_ptr<html_html_elem> hp {new html_html_elem{}};
+                        auto hp = f.html();
 
                         while ((tt = yylex()) != HTML_TT_OPEN_DONE)
                                 ;
 
-                        while ((tt = yylex()) == HTML_TT_TEXT) {
-                                std::shared_ptr<html_elem> tp {new html_text_elem{*yytext}};
-                                hp.get()->append_child(tp);
-                        }
+                        while ((tt = yylex()) == HTML_TT_TEXT)
+                                hp.get()->append_child(f.text(*yytext));
 
                         html_elem_dump_visitor dump {};
                         dump.visit(*hp.get());

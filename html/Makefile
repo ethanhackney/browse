@@ -24,7 +24,8 @@ SLDFLAGS = $(LDFLAGS) -fsanitize=address,undefined
 ELEM_SRC = elem/src/internal.cc \
 	   elem/src/text.cc \
 	   elem/src/html.cc \
-	   elem/src/dump.cc
+	   elem/src/dump.cc \
+	   elem/src/factory.cc
 
 safe: yy.o $(ELEM_SRC)
 	g++ -std=c++11 $(SFLAGS) -o slow $(ELEM_SRC) main.cc yy.o $(SLDFLAGS)

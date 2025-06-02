@@ -29,21 +29,21 @@ std::size_t html_text_elem::child_len(void) const
         return 0;
 }
 
-std::shared_ptr<html_elem> &html_text_elem::get_child(size_t i)
+std::shared_ptr<html_elem> html_text_elem::get_child(size_t i)
 {
         static std::shared_ptr<html_elem> elem {nullptr};
 
         return elem;
 }
 
-const std::shared_ptr<html_elem> &html_text_elem::get_cchild(std::size_t i) const
+const std::shared_ptr<html_elem> html_text_elem::get_cchild(std::size_t i) const
 {
         static std::shared_ptr<html_elem> elem {nullptr};
 
         return elem;
 }
 
-void html_text_elem::append_child(std::shared_ptr<html_elem> &elem)
+void html_text_elem::append_child(std::shared_ptr<html_elem> elem)
 {
 }
 
