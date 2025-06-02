@@ -1,7 +1,10 @@
 #include <stdio.h>
 #include "html.h"
+#include <cstring>
+#include <cstddef>
+#include "tags.h"
 
-extern "C" char *yytext;
+extern char *yytext;
 extern "C" int yylex(void);
 
 int main(void)
@@ -10,17 +13,15 @@ int main(void)
 
         while ((tok = yylex())) {
                 switch (tok) {
-                case HTML_TT_TAG_OPEN:
+                case HTML_TT_LT:
+                case HTML_TT_GT:
+                case HTML_TT_ID:
+                        printf("%s: %d\n", yytext, tok);
                         printf("open: %s\n", yytext);
-                        break;
-                case HTML_TT_TAG_CLOSE:
-                        printf("close: %s\n", yytext);
                         break;
                 default:
                         fprintf(stderr, "error: unknown: %d", tok);
                         break;
                 }
         }
-        if (ferror(stdin))
-                printf("here");
 }

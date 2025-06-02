@@ -1,8 +1,6 @@
 CFLAGS = -Wall					\
 	 -Werror 				\
 	 -Wextra 				\
-	 -Wconversion 				\
-	 -Wsign-conversion 			\
 	 -Wshadow 				\
          -Wpointer-arith 			\
 	 -Wcast-align 				\
@@ -23,18 +21,17 @@ LDFLAGS = $(shell pkg-config --libs cairo x11)
 SFLAGS = $(CFLAGS) -fsanitize=address,undefined
 SLDFLAGS = $(LDFLAGS) -fsanitize=address,undefined
 
-SRC = main.cc
+safe: yy.o tags.h
+	g++ -std=c++11 $(SFLAGS) -o slow main.cc yy.o $(SLDFLAGS)
 
-safe: lex
-	g++ -std=c++11 $(SFLAGS) -o slow $(SRC) yy.o $(SLDFLAGS)
-	rm lex.yy.c
-	rm yy.o
-
-lex: html.l
+lex.yy.c: html.l
 	flex html.l
+
+yy.o: lex.yy.c
 	gcc -c -o yy.o lex.yy.c
 
+tags.h: tags.gperf
+	gperf --output-file=tags.h tags.gperf
+
 fast: lex
-	g++ --std=c++11 $(CFLAGS) -o fast -O3 $(SRC) yy.o $(LDFLAGS)
-	rm lex.yy.c
-	rm yy.o
+	g++ --std=c++11 $(CFLAGS) -o fast -O3 main.cc yy.o $(LDFLAGS)

@@ -1,0 +1,13 @@
+%{
+#include "html.h"
+%}
+
+%%
+</html>, HTML_TAG_HTML
+</body>, HTML_TAG_BODY
+</p>,    HTML_TAG_P
+</h1>,   HTML_TAG_H1
+<html>,  HTML_TAG_HTML
+<body>,  HTML_TAG_BODY
+<p>,     HTML_TAG_P
+<h1>,    HTML_TAG_H1
