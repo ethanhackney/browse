@@ -69,9 +69,6 @@ cat >html.l <<EOF
 
 %{
 #include "html.h"
-#include <stdbool.h>
-
-static bool in_comment = false;
 %}
 
 %%

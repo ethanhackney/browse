@@ -463,11 +463,8 @@ char *yytext;
 /* AUTO-GENERATED */
 #line 4 "html.l"
 #include "html.h"
-#include <stdbool.h>
-
-static bool in_comment = false;
-#line 470 "lex.yy.c"
-#line 471 "lex.yy.c"
+#line 467 "lex.yy.c"
+#line 468 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -684,9 +681,9 @@ YY_DECL
 		}
 
 	{
-#line 10 "html.l"
+#line 7 "html.l"
 
-#line 690 "lex.yy.c"
+#line 687 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -745,66 +742,66 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 11 "html.l"
+#line 8 "html.l"
 { return  HTML_TT_BODY_CLOSE; }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 12 "html.l"
+#line 9 "html.l"
 { return  HTML_TT_HTML_CLOSE; }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 13 "html.l"
+#line 10 "html.l"
 { return  HTML_TT_H1_CLOSE; }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 14 "html.l"
+#line 11 "html.l"
 { return  HTML_TT_P_CLOSE; }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 15 "html.l"
+#line 12 "html.l"
 { return HTML_TT_COMMENT_OPEN; }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 16 "html.l"
+#line 13 "html.l"
 { return  HTML_TT_BODY_OPEN; }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 17 "html.l"
+#line 14 "html.l"
 { return  HTML_TT_HTML_OPEN; }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 18 "html.l"
+#line 15 "html.l"
 { return  HTML_TT_H1_OPEN; }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 19 "html.l"
+#line 16 "html.l"
 { return  HTML_TT_P_OPEN; }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 20 "html.l"
+#line 17 "html.l"
 { return HTML_TT_COMMENT_CLOSE; }
 	YY_BREAK
 case 11:
 /* rule 11 can match eol */
 YY_RULE_SETUP
-#line 21 "html.l"
+#line 18 "html.l"
 { return HTML_TT_TEXT; }
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 22 "html.l"
+#line 19 "html.l"
 ECHO;
 	YY_BREAK
-#line 808 "lex.yy.c"
+#line 805 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1809,7 +1806,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 22 "html.l"
+#line 19 "html.l"
 
 
 int yywrap(void)
