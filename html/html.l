@@ -7,6 +7,8 @@
 static bool in_open_tag = false;
 %}
 
+%option case-insensitive
+
 %%
 <<EOF>> {
         if (in_open_tag)

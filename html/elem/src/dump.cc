@@ -75,7 +75,7 @@ void html_elem_dump_visitor::visit(const html_html_elem &elem)
 {
         indent_print(_os, _indent, "{\n");
 
-        type(_os, _indent + 2, "elem");
+        type(_os, _indent + 2, "html");
 
         dump_internal_node(elem);
 
@@ -84,7 +84,7 @@ void html_elem_dump_visitor::visit(const html_html_elem &elem)
 
 void html_elem_dump_visitor::dump_internal_node(const html_internal_elem &elem)
 {
-        indent_print(_os, _indent + 2, "children: [\n");
+        indent_print(_os, _indent + 2, "\"children\": [\n");
 
         _indent += 4;
         for (std::size_t i = 0; i < elem.child_len(); i++) {
