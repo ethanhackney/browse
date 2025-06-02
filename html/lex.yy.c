@@ -364,8 +364,8 @@ static const flex_int16_t yy_accept[36] =
     {   0,
         0,    0,   11,    9,    9,    0,    0,    0,    0,    0,
         0,    0,    0,    0,    0,    8,    0,    0,    0,    4,
-        0,    6,    0,    0,    2,    0,    0,    0,    0,    0,
-        5,    7,    1,    3,    0
+        0,    7,    0,    0,    3,    0,    0,    0,    0,    0,
+        5,    6,    1,    2,    0
     } ;
 
 static const YY_CHAR yy_ec[256] =
@@ -457,10 +457,11 @@ int yy_flex_debug = 0;
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
 #line 1 "html.l"
-#line 2 "html.l"
+/* AUTO-GENERATED */
+#line 4 "html.l"
 #include "html.h"
-#line 463 "lex.yy.c"
 #line 464 "lex.yy.c"
+#line 465 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -677,9 +678,9 @@ YY_DECL
 		}
 
 	{
-#line 5 "html.l"
+#line 7 "html.l"
 
-#line 683 "lex.yy.c"
+#line 684 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -738,56 +739,56 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 6 "html.l"
+#line 8 "html.l"
 { return  HTML_TT_BODY_CLOSE; }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 7 "html.l"
-{ return  HTML_TT_H1_CLOSE; }
+#line 9 "html.l"
+{ return  HTML_TT_HTML_CLOSE; }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 8 "html.l"
-{ return  HTML_TT_HTML_CLOSE; }
+#line 10 "html.l"
+{ return  HTML_TT_H1_CLOSE; }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 9 "html.l"
+#line 11 "html.l"
 { return  HTML_TT_P_CLOSE; }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 10 "html.l"
+#line 12 "html.l"
 { return  HTML_TT_BODY_OPEN; }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 11 "html.l"
-{ return  HTML_TT_H1_OPEN; }
+#line 13 "html.l"
+{ return  HTML_TT_HTML_OPEN; }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 12 "html.l"
-{ return  HTML_TT_HTML_OPEN; }
+#line 14 "html.l"
+{ return  HTML_TT_H1_OPEN; }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 13 "html.l"
+#line 15 "html.l"
 { return  HTML_TT_P_OPEN; }
 	YY_BREAK
 case 9:
 /* rule 9 can match eol */
 YY_RULE_SETUP
-#line 14 "html.l"
+#line 16 "html.l"
 { /* skip */ }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 15 "html.l"
+#line 17 "html.l"
 ECHO;
 	YY_BREAK
-#line 791 "lex.yy.c"
+#line 792 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1792,7 +1793,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 15 "html.l"
+#line 17 "html.l"
 
 
 int yywrap(void)
