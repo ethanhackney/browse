@@ -23,15 +23,21 @@ SLDFLAGS = $(LDFLAGS) -fsanitize=address,undefined
 
 safe: yy.o tags.h
 	g++ -std=c++11 $(SFLAGS) -o slow main.cc yy.o $(SLDFLAGS)
-
-lex.yy.c: html.l
-	flex html.l
+	rm yy.o
 
 yy.o: lex.yy.c
 	gcc -c -o yy.o lex.yy.c
 
+lex.yy.c: genlex.sh
+	./genlex.sh
+	flex html.l
+
 tags.h: tags.gperf
 	gperf --output-file=tags.h tags.gperf
 
-fast: lex
+fast: yy.o tags.h
 	g++ --std=c++11 $(CFLAGS) -o fast -O3 main.cc yy.o $(LDFLAGS)
+	rm yy.o
+
+clean:
+	rm -f slow fast yy.o lex.yy.c tags.h
