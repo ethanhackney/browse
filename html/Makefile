@@ -28,7 +28,7 @@ safe: yy.o tags.h
 yy.o: lex.yy.c
 	gcc -c -o yy.o lex.yy.c
 
-lex.yy.c: genlex.sh
+lex.yy.c: genlex.sh tagtab
 	./genlex.sh
 	flex html.l
 
