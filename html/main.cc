@@ -16,6 +16,8 @@ int main(void)
 
         while ((tt = yylex())) {
                 if (istag(tt))
-                        printf("text: %s\n", yytext);
+                        printf("tag: %s\n", yytext);
+                else
+                        printf("text: '%s'\n", yytext);
         }
 }

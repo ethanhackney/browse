@@ -19,20 +19,23 @@ EOF
 # generate open tags
 echo -e "\tHTML_TT_TAG_OPEN_START, /* start of open tags */" >>html.h
 for tag in "${tags[@]}"; do
-  echo -e "\tHTML_TT_${tag^^}_OPEN, /* </${tag}> */" >>html.h
+  echo -e "\tHTML_TT_${tag^^}_OPEN, /* <${tag}> */" >>html.h
 done
+echo -e "\tHTML_TT_COMMENT_OPEN, /* <!-- */" >>html.h
 echo -e "\tHTML_TT_TAG_OPEN_END, /* end of open tags */" >>html.h
 
 # generate close tags
 echo -e "\tHTML_TT_TAG_CLOSE_START, /* start of close tags */" >>html.h
 for tag in "${tags[@]}"; do
-  echo -e "\tHTML_TT_${tag^^}_CLOSE, /* <${tag}> */" >>html.h
+  echo -e "\tHTML_TT_${tag^^}_CLOSE, /* </${tag}> */" >>html.h
 done
+echo -e "\tHTML_TT_COMMENT_CLOSE, /* --> */" >>html.h
 echo -e "\tHTML_TT_TAG_CLOSE_END, /* end of close tags */" >>html.h
 
 # generate end of html.h
 cat >>html.h <<EOF
         HTML_TT_TAG_END, /* end of tags */
+        HTML_TT_TEXT, /* regular text */
         HTML_TT_COUNT, /* type count */
 };
 
@@ -66,6 +69,9 @@ cat >html.l <<EOF
 
 %{
 #include "html.h"
+#include <stdbool.h>
+
+static bool in_comment = false;
 %}
 
 %%
@@ -75,13 +81,14 @@ EOF
 for tag in "${tags[@]}"; do
   echo "\"</${tag}>\" { return  HTML_TT_${tag^^}_CLOSE; }" >>html.l
 done
+echo '"<!--" { return HTML_TT_COMMENT_OPEN; }' >>html.l
 
 # generate flex for open tag
 for tag in "${tags[@]}"; do
   echo "\"<${tag}>\" { return  HTML_TT_${tag^^}_OPEN; }" >>html.l
 done
-
-echo '.|\n { /* skip */ }' >>html.l
+echo '"-->" { return HTML_TT_COMMENT_CLOSE; }' >>html.l
+echo ".|\n { return HTML_TT_TEXT; }" >>html.l
 
 # generate end of html.l
 cat >>html.l <<EOF
