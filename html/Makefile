@@ -34,8 +34,8 @@ safe: yy.o $(ELEM_SRC)
 yy.o: lex.yy.c
 	gcc -c -o yy.o lex.yy.c
 
-lex.yy.c: genlex.sh tagtab
-	./genlex.sh
+lex.yy.c: gen/lex.sh tagtab
+	./gen/lex.sh
 	flex html.l
 
 fast: yy.o $(ELEM_SRC)
