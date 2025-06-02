@@ -32,9 +32,6 @@ lex.yy.c: genlex.sh
 	./genlex.sh
 	flex html.l
 
-tags.h: tags.gperf
-	gperf --output-file=tags.h tags.gperf
-
 fast: yy.o tags.h
 	g++ --std=c++11 $(CFLAGS) -o fast -O3 main.cc yy.o $(LDFLAGS)
 	rm yy.o
