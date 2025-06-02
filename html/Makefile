@@ -1,6 +1,5 @@
-INC = -I../../
-CFLAGS = $(INC) -std=c++11 				\
-	 -Wall -Werror 				\
+CFLAGS = -Wall					\
+	 -Werror 				\
 	 -Wextra 				\
 	 -Wconversion 				\
 	 -Wsign-conversion 			\
@@ -24,12 +23,18 @@ LDFLAGS = $(shell pkg-config --libs cairo x11)
 SFLAGS = $(CFLAGS) -fsanitize=address,undefined
 SLDFLAGS = $(LDFLAGS) -fsanitize=address,undefined
 
-SRC = main.cc lex.cc
-CC = g++
+SRC = main.cc
 
-safe:
-	$(CC) $(SFLAGS) $(SRC) $(SLDFLAGS)
+safe: lex
+	g++ -std=c++11 $(SFLAGS) -o slow $(SRC) yy.o $(SLDFLAGS)
+	rm lex.yy.c
+	rm yy.o
 
-fast:
-	$(CC) $(CFLAGS) -O3 $(SRC) $(LDFLAGS)
+lex: html.l
+	flex html.l
+	gcc -c -o yy.o lex.yy.c
 
+fast: lex
+	g++ --std=c++11 $(CFLAGS) -o fast -O3 $(SRC) yy.o $(LDFLAGS)
+	rm lex.yy.c
+	rm yy.o
