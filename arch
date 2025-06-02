@@ -1,0 +1,17 @@
+# where to write console messages?
+console
+
+# WebSocket Protocol: RFC 6455
+web socket
+
+# http client
+http client
+
+# HTML5 compiler: https://html.spec.whatwg.org/multipage/
+html parser
+
+# css compiler: https://www.w3.org/TR/css-2024/#css-official 
+html/css renderer
+
+# js interpreter: https://262.ecma-international.org/
+js interpreter
