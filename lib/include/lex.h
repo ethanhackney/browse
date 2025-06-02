@@ -15,34 +15,8 @@ namespace lex {
 enum {
         LEX_TT_INV = -4, // invalid error (must be first)
         LEX_TT_ERR_IO,   // i/o error
-        LEX_TT_ERR_IN,   // invalid lexeme
+        LEX_TT_ERR_LEX,  // invalid lexeme
         LEX_TT_EOF,      // end of input
-};
-
-// invalid token type
-struct bad_type {
-        int tok; // offending token
-};
-
-// token
-struct token {
-        std::string lex; // lexeme
-        int         tok; // token
-
-        /**
-         * tok constructor:
-         *
-         * args:
-         *  @lexeme: lexeme
-         *  @token:  token type
-         *
-         * throws
-         *  bad_type{}: if one of tokens has invalid type
-         */
-        token(const std::string &lexeme, int type)
-                : lex {lexeme},
-                tok {type}
-        {}
 };
 
 // invalid pattern
@@ -75,15 +49,24 @@ struct token_pattern {
         }
 };
 
+// invalid token type
+struct bad_type {
+        int tok; // offending token
+};
+
 // pattern list
 using pattern_list = std::vector<token_pattern>;
+// reject list
+using reject_list = std::vector<unsigned char>;
 
 // abstract lexer
 class lex {
 private:
-        pattern_list  _pat; // pattern list
-        std::istream &_is;  // input stream
-        token         _cur; // current token
+        std::bitset<UCHAR_MAX+1>  _rej; // reject list
+        const pattern_list        _pat; // pattern list
+        std::istream             &_is;  // input stream
+        std::string               _lex; // current lexeme
+        int                       _tok; // current type
 public:
         /**
          * lex constructor:
@@ -91,8 +74,13 @@ public:
          * args:
          *  @is:  input stream
          *  @pat: patterns
+         *  @rej: reject char list
+         *
+         * throws
+         *  bad_type{}:   if one of token_patterns has invalid type
+         *  bad_reject{}: if one of rejects is invalid
          */
-        lex(std::istream &is, const pattern_list &pat);
+        lex(std::istream &is, const pattern_list &pat, const reject_list& rej);
 
         /**
          * move to next token:
@@ -102,6 +90,24 @@ public:
          *  @failure: -1
          */
         void next(void);
+
+        /**
+         * get current token type:
+         *
+         * ret:
+         *  @success: current token type
+         *  @failure: does not
+         */
+        int tok(void) const;
+
+        /**
+         * get current lexeme:
+         *
+         * ret:
+         *  @success: current lexeme
+         *  @failure: does not
+         */
+        const std::string &lexeme(void) const;
 };
 
 } // namespace lex
