@@ -262,27 +262,28 @@ enum {
 	HTML_TT_COMMENT_CLOSE, /* --> */
 	HTML_TT_TAG_CLOSE_END, /* end of close tags */
         HTML_TT_TAG_END, /* end of tags */
+        HTML_TT_OPEN_DONE, /* done with opening tag? */
         HTML_TT_TEXT, /* regular text */
         HTML_TT_COUNT, /* type count */
 };
 
 /* test if token type is tag */
 static inline bool
-istag(int tt)
+is_tag(int tt)
 {
         return HTML_TT_TAG_START < tt && tt < HTML_TT_TAG_END;
 }
 
 /* test if open tag */
 static inline bool
-isopentag(int tt)
+is_open_tag(int tt)
 {
         return HTML_TT_TAG_OPEN_START < tt && tt < HTML_TT_TAG_OPEN_END;
 }
 
 /* test if close tag */
 static inline bool
-isclosetag(int tt)
+is_close_tag(int tt)
 {
         return HTML_TT_TAG_CLOSE_START < tt && tt < HTML_TT_TAG_CLOSE_END;
 }

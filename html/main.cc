@@ -146,7 +146,7 @@ int main(void)
         auto tt = 0;
 
         while ((tt = yylex())) {
-                if (!istag(tt))
+                if (!is_tag(tt))
                         continue;
 
                 if (tt != HTML_TT_HTML_OPEN)
@@ -154,6 +154,9 @@ int main(void)
 
                 try {
                         std::shared_ptr<html_html_elem> hp {new html_html_elem{}};
+
+                        while ((tt = yylex()) != HTML_TT_OPEN_DONE)
+                                ;
 
                         while ((tt = yylex()) == HTML_TT_TEXT) {
                                 std::shared_ptr<html_elem> tp {new html_text_elem{*yytext}};

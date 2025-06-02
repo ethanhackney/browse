@@ -35,27 +35,28 @@ echo -e "\tHTML_TT_TAG_CLOSE_END, /* end of close tags */" >>html.h
 # generate end of html.h
 cat >>html.h <<EOF
         HTML_TT_TAG_END, /* end of tags */
+        HTML_TT_OPEN_DONE, /* done with opening tag? */
         HTML_TT_TEXT, /* regular text */
         HTML_TT_COUNT, /* type count */
 };
 
 /* test if token type is tag */
 static inline bool
-istag(int tt)
+is_tag(int tt)
 {
         return HTML_TT_TAG_START < tt && tt < HTML_TT_TAG_END;
 }
 
 /* test if open tag */
 static inline bool
-isopentag(int tt)
+is_open_tag(int tt)
 {
         return HTML_TT_TAG_OPEN_START < tt && tt < HTML_TT_TAG_OPEN_END;
 }
 
 /* test if close tag */
 static inline bool
-isclosetag(int tt)
+is_close_tag(int tt)
 {
         return HTML_TT_TAG_CLOSE_START < tt && tt < HTML_TT_TAG_CLOSE_END;
 }
@@ -69,6 +70,9 @@ cat >html.l <<EOF
 
 %{
 #include "html.h"
+#include <stdbool.h>
+
+static bool in_open_tag = false;
 %}
 
 %%
@@ -82,10 +86,31 @@ echo '"<!--" { return HTML_TT_COMMENT_OPEN; }' >>html.l
 
 # generate flex for open tag
 for tag in "${tags[@]}"; do
-  echo "\"<${tag}>\" { return  HTML_TT_${tag^^}_OPEN; }" >>html.l
+  cat >>html.l <<EOF
+"<${tag}" {
+        in_open_tag = true;
+        return HTML_TT_${tag^^}_OPEN;
+}
+EOF
 done
-echo '"-->" { return HTML_TT_COMMENT_CLOSE; }' >>html.l
-echo ".|\n { return HTML_TT_TEXT; }" >>html.l
+
+cat >>html.l <<EOF
+"-->" { return HTML_TT_COMMENT_CLOSE; }
+">" {
+        in_open_tag = false;
+        return HTML_TT_OPEN_DONE;
+}
+EOF
+
+cat >>html.l <<EOF
+.|\n {
+        if (!in_open_tag)
+                return HTML_TT_TEXT;
+
+        printf("%s\n", yytext);
+        yymore();
+}
+EOF
 
 # generate end of html.l
 cat >>html.l <<EOF
