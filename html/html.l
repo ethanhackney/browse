@@ -8,6 +8,12 @@ static bool in_open_tag = false;
 %}
 
 %%
+<<EOF>> {
+        if (in_open_tag)
+                return HTML_TT_TAG_UNTERM;
+
+        return 0;
+}
 "</a>" { return  HTML_TT_A_CLOSE; }
 "</abbr>" { return  HTML_TT_ABBR_CLOSE; }
 "</acronym>" { return  HTML_TT_ACRONYM_CLOSE; }
@@ -638,7 +644,6 @@ static bool in_open_tag = false;
         if (!in_open_tag)
                 return HTML_TT_TEXT;
 
-        printf("%s\n", yytext);
         yymore();
 }
 %%

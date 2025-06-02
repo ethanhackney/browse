@@ -1249,634 +1249,643 @@ do_action:	/* This label is used only to access EOF actions. */
 			yy_current_state = (yy_last_accepting_state);
 			goto yy_find_action;
 
+case YY_STATE_EOF(INITIAL):
+#line 11 "html.l"
+{
+        if (in_open_tag)
+                return HTML_TT_TAG_UNTERM;
+
+        return 0;
+}
+	YY_BREAK
 case 1:
 YY_RULE_SETUP
-#line 11 "html.l"
+#line 17 "html.l"
 { return  HTML_TT_A_CLOSE; }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 12 "html.l"
+#line 18 "html.l"
 { return  HTML_TT_ABBR_CLOSE; }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 13 "html.l"
+#line 19 "html.l"
 { return  HTML_TT_ACRONYM_CLOSE; }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 14 "html.l"
+#line 20 "html.l"
 { return  HTML_TT_ADDRESS_CLOSE; }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 15 "html.l"
+#line 21 "html.l"
 { return  HTML_TT_APPLET_CLOSE; }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 16 "html.l"
+#line 22 "html.l"
 { return  HTML_TT_AREA_CLOSE; }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 17 "html.l"
+#line 23 "html.l"
 { return  HTML_TT_ASIDE_CLOSE; }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 18 "html.l"
+#line 24 "html.l"
 { return  HTML_TT_AUDIO_CLOSE; }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 19 "html.l"
+#line 25 "html.l"
 { return  HTML_TT_B_CLOSE; }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 20 "html.l"
+#line 26 "html.l"
 { return  HTML_TT_BASE_CLOSE; }
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 21 "html.l"
+#line 27 "html.l"
 { return  HTML_TT_BASEFONT_CLOSE; }
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 22 "html.l"
+#line 28 "html.l"
 { return  HTML_TT_BDI_CLOSE; }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 23 "html.l"
+#line 29 "html.l"
 { return  HTML_TT_BDO_CLOSE; }
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 24 "html.l"
+#line 30 "html.l"
 { return  HTML_TT_BIG_CLOSE; }
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 25 "html.l"
+#line 31 "html.l"
 { return  HTML_TT_BLOCKQUOTE_CLOSE; }
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 26 "html.l"
+#line 32 "html.l"
 { return  HTML_TT_BODY_CLOSE; }
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 27 "html.l"
+#line 33 "html.l"
 { return  HTML_TT_BR_CLOSE; }
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 28 "html.l"
+#line 34 "html.l"
 { return  HTML_TT_BUTTON_CLOSE; }
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 29 "html.l"
+#line 35 "html.l"
 { return  HTML_TT_CANVAS_CLOSE; }
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 30 "html.l"
+#line 36 "html.l"
 { return  HTML_TT_CAPTION_CLOSE; }
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 31 "html.l"
+#line 37 "html.l"
 { return  HTML_TT_CENTER_CLOSE; }
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 32 "html.l"
+#line 38 "html.l"
 { return  HTML_TT_CITE_CLOSE; }
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 33 "html.l"
+#line 39 "html.l"
 { return  HTML_TT_CODE_CLOSE; }
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 34 "html.l"
+#line 40 "html.l"
 { return  HTML_TT_COL_CLOSE; }
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 35 "html.l"
+#line 41 "html.l"
 { return  HTML_TT_COLGROUP_CLOSE; }
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 36 "html.l"
+#line 42 "html.l"
 { return  HTML_TT_DATA_CLOSE; }
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 37 "html.l"
+#line 43 "html.l"
 { return  HTML_TT_DATALIST_CLOSE; }
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 38 "html.l"
+#line 44 "html.l"
 { return  HTML_TT_DD_CLOSE; }
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 39 "html.l"
+#line 45 "html.l"
 { return  HTML_TT_DEL_CLOSE; }
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 40 "html.l"
+#line 46 "html.l"
 { return  HTML_TT_DETAILS_CLOSE; }
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 41 "html.l"
+#line 47 "html.l"
 { return  HTML_TT_DFN_CLOSE; }
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 42 "html.l"
+#line 48 "html.l"
 { return  HTML_TT_DIALOG_CLOSE; }
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 43 "html.l"
+#line 49 "html.l"
 { return  HTML_TT_DIR_CLOSE; }
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 44 "html.l"
+#line 50 "html.l"
 { return  HTML_TT_DIV_CLOSE; }
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 45 "html.l"
+#line 51 "html.l"
 { return  HTML_TT_DL_CLOSE; }
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 46 "html.l"
+#line 52 "html.l"
 { return  HTML_TT_DT_CLOSE; }
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 47 "html.l"
+#line 53 "html.l"
 { return  HTML_TT_EM_CLOSE; }
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 48 "html.l"
+#line 54 "html.l"
 { return  HTML_TT_EMBED_CLOSE; }
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 49 "html.l"
+#line 55 "html.l"
 { return  HTML_TT_FIELDSET_CLOSE; }
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 50 "html.l"
+#line 56 "html.l"
 { return  HTML_TT_FIGCAPTION_CLOSE; }
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 51 "html.l"
+#line 57 "html.l"
 { return  HTML_TT_FIGURE_CLOSE; }
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 52 "html.l"
+#line 58 "html.l"
 { return  HTML_TT_FONT_CLOSE; }
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 53 "html.l"
+#line 59 "html.l"
 { return  HTML_TT_FOOTER_CLOSE; }
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 54 "html.l"
+#line 60 "html.l"
 { return  HTML_TT_FORM_CLOSE; }
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 55 "html.l"
+#line 61 "html.l"
 { return  HTML_TT_FRAME_CLOSE; }
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
-#line 56 "html.l"
+#line 62 "html.l"
 { return  HTML_TT_FRAMESET_CLOSE; }
 	YY_BREAK
 case 47:
 YY_RULE_SETUP
-#line 57 "html.l"
+#line 63 "html.l"
 { return  HTML_TT_H1_CLOSE; }
 	YY_BREAK
 case 48:
 YY_RULE_SETUP
-#line 58 "html.l"
+#line 64 "html.l"
 { return  HTML_TT_H2_CLOSE; }
 	YY_BREAK
 case 49:
 YY_RULE_SETUP
-#line 59 "html.l"
+#line 65 "html.l"
 { return  HTML_TT_H3_CLOSE; }
 	YY_BREAK
 case 50:
 YY_RULE_SETUP
-#line 60 "html.l"
+#line 66 "html.l"
 { return  HTML_TT_H4_CLOSE; }
 	YY_BREAK
 case 51:
 YY_RULE_SETUP
-#line 61 "html.l"
+#line 67 "html.l"
 { return  HTML_TT_H5_CLOSE; }
 	YY_BREAK
 case 52:
 YY_RULE_SETUP
-#line 62 "html.l"
+#line 68 "html.l"
 { return  HTML_TT_H6_CLOSE; }
 	YY_BREAK
 case 53:
 YY_RULE_SETUP
-#line 63 "html.l"
+#line 69 "html.l"
 { return  HTML_TT_HEAD_CLOSE; }
 	YY_BREAK
 case 54:
 YY_RULE_SETUP
-#line 64 "html.l"
+#line 70 "html.l"
 { return  HTML_TT_HEADER_CLOSE; }
 	YY_BREAK
 case 55:
 YY_RULE_SETUP
-#line 65 "html.l"
+#line 71 "html.l"
 { return  HTML_TT_HGROUP_CLOSE; }
 	YY_BREAK
 case 56:
 YY_RULE_SETUP
-#line 66 "html.l"
+#line 72 "html.l"
 { return  HTML_TT_HR_CLOSE; }
 	YY_BREAK
 case 57:
 YY_RULE_SETUP
-#line 67 "html.l"
+#line 73 "html.l"
 { return  HTML_TT_HTML_CLOSE; }
 	YY_BREAK
 case 58:
 YY_RULE_SETUP
-#line 68 "html.l"
+#line 74 "html.l"
 { return  HTML_TT_I_CLOSE; }
 	YY_BREAK
 case 59:
 YY_RULE_SETUP
-#line 69 "html.l"
+#line 75 "html.l"
 { return  HTML_TT_IFRAME_CLOSE; }
 	YY_BREAK
 case 60:
 YY_RULE_SETUP
-#line 70 "html.l"
+#line 76 "html.l"
 { return  HTML_TT_IMG_CLOSE; }
 	YY_BREAK
 case 61:
 YY_RULE_SETUP
-#line 71 "html.l"
+#line 77 "html.l"
 { return  HTML_TT_INPUT_CLOSE; }
 	YY_BREAK
 case 62:
 YY_RULE_SETUP
-#line 72 "html.l"
+#line 78 "html.l"
 { return  HTML_TT_INS_CLOSE; }
 	YY_BREAK
 case 63:
 YY_RULE_SETUP
-#line 73 "html.l"
+#line 79 "html.l"
 { return  HTML_TT_KBD_CLOSE; }
 	YY_BREAK
 case 64:
 YY_RULE_SETUP
-#line 74 "html.l"
+#line 80 "html.l"
 { return  HTML_TT_LABEL_CLOSE; }
 	YY_BREAK
 case 65:
 YY_RULE_SETUP
-#line 75 "html.l"
+#line 81 "html.l"
 { return  HTML_TT_LEGEND_CLOSE; }
 	YY_BREAK
 case 66:
 YY_RULE_SETUP
-#line 76 "html.l"
+#line 82 "html.l"
 { return  HTML_TT_LI_CLOSE; }
 	YY_BREAK
 case 67:
 YY_RULE_SETUP
-#line 77 "html.l"
+#line 83 "html.l"
 { return  HTML_TT_LINK_CLOSE; }
 	YY_BREAK
 case 68:
 YY_RULE_SETUP
-#line 78 "html.l"
+#line 84 "html.l"
 { return  HTML_TT_MAIN_CLOSE; }
 	YY_BREAK
 case 69:
 YY_RULE_SETUP
-#line 79 "html.l"
+#line 85 "html.l"
 { return  HTML_TT_MAP_CLOSE; }
 	YY_BREAK
 case 70:
 YY_RULE_SETUP
-#line 80 "html.l"
+#line 86 "html.l"
 { return  HTML_TT_MARK_CLOSE; }
 	YY_BREAK
 case 71:
 YY_RULE_SETUP
-#line 81 "html.l"
+#line 87 "html.l"
 { return  HTML_TT_MENU_CLOSE; }
 	YY_BREAK
 case 72:
 YY_RULE_SETUP
-#line 82 "html.l"
+#line 88 "html.l"
 { return  HTML_TT_META_CLOSE; }
 	YY_BREAK
 case 73:
 YY_RULE_SETUP
-#line 83 "html.l"
+#line 89 "html.l"
 { return  HTML_TT_METER_CLOSE; }
 	YY_BREAK
 case 74:
 YY_RULE_SETUP
-#line 84 "html.l"
+#line 90 "html.l"
 { return  HTML_TT_NAV_CLOSE; }
 	YY_BREAK
 case 75:
 YY_RULE_SETUP
-#line 85 "html.l"
+#line 91 "html.l"
 { return  HTML_TT_NOFRAMES_CLOSE; }
 	YY_BREAK
 case 76:
 YY_RULE_SETUP
-#line 86 "html.l"
+#line 92 "html.l"
 { return  HTML_TT_NOSCRIPT_CLOSE; }
 	YY_BREAK
 case 77:
 YY_RULE_SETUP
-#line 87 "html.l"
+#line 93 "html.l"
 { return  HTML_TT_OBJECT_CLOSE; }
 	YY_BREAK
 case 78:
 YY_RULE_SETUP
-#line 88 "html.l"
+#line 94 "html.l"
 { return  HTML_TT_OL_CLOSE; }
 	YY_BREAK
 case 79:
 YY_RULE_SETUP
-#line 89 "html.l"
+#line 95 "html.l"
 { return  HTML_TT_OPTGROUP_CLOSE; }
 	YY_BREAK
 case 80:
 YY_RULE_SETUP
-#line 90 "html.l"
+#line 96 "html.l"
 { return  HTML_TT_OPTION_CLOSE; }
 	YY_BREAK
 case 81:
 YY_RULE_SETUP
-#line 91 "html.l"
+#line 97 "html.l"
 { return  HTML_TT_OUTPUT_CLOSE; }
 	YY_BREAK
 case 82:
 YY_RULE_SETUP
-#line 92 "html.l"
+#line 98 "html.l"
 { return  HTML_TT_P_CLOSE; }
 	YY_BREAK
 case 83:
 YY_RULE_SETUP
-#line 93 "html.l"
+#line 99 "html.l"
 { return  HTML_TT_PARAM_CLOSE; }
 	YY_BREAK
 case 84:
 YY_RULE_SETUP
-#line 94 "html.l"
+#line 100 "html.l"
 { return  HTML_TT_PICTURE_CLOSE; }
 	YY_BREAK
 case 85:
 YY_RULE_SETUP
-#line 95 "html.l"
+#line 101 "html.l"
 { return  HTML_TT_PRE_CLOSE; }
 	YY_BREAK
 case 86:
 YY_RULE_SETUP
-#line 96 "html.l"
+#line 102 "html.l"
 { return  HTML_TT_PROGRESS_CLOSE; }
 	YY_BREAK
 case 87:
 YY_RULE_SETUP
-#line 97 "html.l"
+#line 103 "html.l"
 { return  HTML_TT_Q_CLOSE; }
 	YY_BREAK
 case 88:
 YY_RULE_SETUP
-#line 98 "html.l"
+#line 104 "html.l"
 { return  HTML_TT_RP_CLOSE; }
 	YY_BREAK
 case 89:
 YY_RULE_SETUP
-#line 99 "html.l"
+#line 105 "html.l"
 { return  HTML_TT_RT_CLOSE; }
 	YY_BREAK
 case 90:
 YY_RULE_SETUP
-#line 100 "html.l"
+#line 106 "html.l"
 { return  HTML_TT_RUBY_CLOSE; }
 	YY_BREAK
 case 91:
 YY_RULE_SETUP
-#line 101 "html.l"
+#line 107 "html.l"
 { return  HTML_TT_S_CLOSE; }
 	YY_BREAK
 case 92:
 YY_RULE_SETUP
-#line 102 "html.l"
+#line 108 "html.l"
 { return  HTML_TT_SAMP_CLOSE; }
 	YY_BREAK
 case 93:
 YY_RULE_SETUP
-#line 103 "html.l"
+#line 109 "html.l"
 { return  HTML_TT_SCRIPT_CLOSE; }
 	YY_BREAK
 case 94:
 YY_RULE_SETUP
-#line 104 "html.l"
+#line 110 "html.l"
 { return  HTML_TT_SEARCH_CLOSE; }
 	YY_BREAK
 case 95:
 YY_RULE_SETUP
-#line 105 "html.l"
+#line 111 "html.l"
 { return  HTML_TT_SECTION_CLOSE; }
 	YY_BREAK
 case 96:
 YY_RULE_SETUP
-#line 106 "html.l"
+#line 112 "html.l"
 { return  HTML_TT_SELECT_CLOSE; }
 	YY_BREAK
 case 97:
 YY_RULE_SETUP
-#line 107 "html.l"
+#line 113 "html.l"
 { return  HTML_TT_SMALL_CLOSE; }
 	YY_BREAK
 case 98:
 YY_RULE_SETUP
-#line 108 "html.l"
+#line 114 "html.l"
 { return  HTML_TT_SOURCE_CLOSE; }
 	YY_BREAK
 case 99:
 YY_RULE_SETUP
-#line 109 "html.l"
+#line 115 "html.l"
 { return  HTML_TT_SPAN_CLOSE; }
 	YY_BREAK
 case 100:
 YY_RULE_SETUP
-#line 110 "html.l"
+#line 116 "html.l"
 { return  HTML_TT_STRIKE_CLOSE; }
 	YY_BREAK
 case 101:
 YY_RULE_SETUP
-#line 111 "html.l"
+#line 117 "html.l"
 { return  HTML_TT_STRONG_CLOSE; }
 	YY_BREAK
 case 102:
 YY_RULE_SETUP
-#line 112 "html.l"
+#line 118 "html.l"
 { return  HTML_TT_STYLE_CLOSE; }
 	YY_BREAK
 case 103:
 YY_RULE_SETUP
-#line 113 "html.l"
+#line 119 "html.l"
 { return  HTML_TT_SUB_CLOSE; }
 	YY_BREAK
 case 104:
 YY_RULE_SETUP
-#line 114 "html.l"
+#line 120 "html.l"
 { return  HTML_TT_SUMMARY_CLOSE; }
 	YY_BREAK
 case 105:
 YY_RULE_SETUP
-#line 115 "html.l"
+#line 121 "html.l"
 { return  HTML_TT_SUP_CLOSE; }
 	YY_BREAK
 case 106:
 YY_RULE_SETUP
-#line 116 "html.l"
+#line 122 "html.l"
 { return  HTML_TT_SVG_CLOSE; }
 	YY_BREAK
 case 107:
 YY_RULE_SETUP
-#line 117 "html.l"
+#line 123 "html.l"
 { return  HTML_TT_TABLE_CLOSE; }
 	YY_BREAK
 case 108:
 YY_RULE_SETUP
-#line 118 "html.l"
+#line 124 "html.l"
 { return  HTML_TT_TBODY_CLOSE; }
 	YY_BREAK
 case 109:
 YY_RULE_SETUP
-#line 119 "html.l"
+#line 125 "html.l"
 { return  HTML_TT_TD_CLOSE; }
 	YY_BREAK
 case 110:
 YY_RULE_SETUP
-#line 120 "html.l"
+#line 126 "html.l"
 { return  HTML_TT_TEMPLATE_CLOSE; }
 	YY_BREAK
 case 111:
 YY_RULE_SETUP
-#line 121 "html.l"
+#line 127 "html.l"
 { return  HTML_TT_TEXTAREA_CLOSE; }
 	YY_BREAK
 case 112:
 YY_RULE_SETUP
-#line 122 "html.l"
+#line 128 "html.l"
 { return  HTML_TT_TFOOT_CLOSE; }
 	YY_BREAK
 case 113:
 YY_RULE_SETUP
-#line 123 "html.l"
+#line 129 "html.l"
 { return  HTML_TT_TH_CLOSE; }
 	YY_BREAK
 case 114:
 YY_RULE_SETUP
-#line 124 "html.l"
+#line 130 "html.l"
 { return  HTML_TT_THEAD_CLOSE; }
 	YY_BREAK
 case 115:
 YY_RULE_SETUP
-#line 125 "html.l"
+#line 131 "html.l"
 { return  HTML_TT_TIME_CLOSE; }
 	YY_BREAK
 case 116:
 YY_RULE_SETUP
-#line 126 "html.l"
+#line 132 "html.l"
 { return  HTML_TT_TITLE_CLOSE; }
 	YY_BREAK
 case 117:
 YY_RULE_SETUP
-#line 127 "html.l"
+#line 133 "html.l"
 { return  HTML_TT_TR_CLOSE; }
 	YY_BREAK
 case 118:
 YY_RULE_SETUP
-#line 128 "html.l"
+#line 134 "html.l"
 { return  HTML_TT_TRACK_CLOSE; }
 	YY_BREAK
 case 119:
 YY_RULE_SETUP
-#line 129 "html.l"
+#line 135 "html.l"
 { return  HTML_TT_TT_CLOSE; }
 	YY_BREAK
 case 120:
 YY_RULE_SETUP
-#line 130 "html.l"
+#line 136 "html.l"
 { return  HTML_TT_U_CLOSE; }
 	YY_BREAK
 case 121:
 YY_RULE_SETUP
-#line 131 "html.l"
+#line 137 "html.l"
 { return  HTML_TT_UL_CLOSE; }
 	YY_BREAK
 case 122:
 YY_RULE_SETUP
-#line 132 "html.l"
+#line 138 "html.l"
 { return  HTML_TT_VAR_CLOSE; }
 	YY_BREAK
 case 123:
 YY_RULE_SETUP
-#line 133 "html.l"
+#line 139 "html.l"
 { return  HTML_TT_VIDEO_CLOSE; }
 	YY_BREAK
 case 124:
 YY_RULE_SETUP
-#line 134 "html.l"
+#line 140 "html.l"
 { return  HTML_TT_WBR_CLOSE; }
 	YY_BREAK
 case 125:
 YY_RULE_SETUP
-#line 135 "html.l"
+#line 141 "html.l"
 { return HTML_TT_COMMENT_OPEN; }
 	YY_BREAK
 case 126:
 YY_RULE_SETUP
-#line 136 "html.l"
+#line 142 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_A_OPEN;
@@ -1884,7 +1893,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 127:
 YY_RULE_SETUP
-#line 140 "html.l"
+#line 146 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_ABBR_OPEN;
@@ -1892,7 +1901,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 128:
 YY_RULE_SETUP
-#line 144 "html.l"
+#line 150 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_ACRONYM_OPEN;
@@ -1900,7 +1909,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 129:
 YY_RULE_SETUP
-#line 148 "html.l"
+#line 154 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_ADDRESS_OPEN;
@@ -1908,7 +1917,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 130:
 YY_RULE_SETUP
-#line 152 "html.l"
+#line 158 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_APPLET_OPEN;
@@ -1916,7 +1925,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 131:
 YY_RULE_SETUP
-#line 156 "html.l"
+#line 162 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_AREA_OPEN;
@@ -1924,7 +1933,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 132:
 YY_RULE_SETUP
-#line 160 "html.l"
+#line 166 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_ASIDE_OPEN;
@@ -1932,7 +1941,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 133:
 YY_RULE_SETUP
-#line 164 "html.l"
+#line 170 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_AUDIO_OPEN;
@@ -1940,7 +1949,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 134:
 YY_RULE_SETUP
-#line 168 "html.l"
+#line 174 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_B_OPEN;
@@ -1948,7 +1957,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 135:
 YY_RULE_SETUP
-#line 172 "html.l"
+#line 178 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_BASE_OPEN;
@@ -1956,7 +1965,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 136:
 YY_RULE_SETUP
-#line 176 "html.l"
+#line 182 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_BASEFONT_OPEN;
@@ -1964,7 +1973,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 137:
 YY_RULE_SETUP
-#line 180 "html.l"
+#line 186 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_BDI_OPEN;
@@ -1972,7 +1981,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 138:
 YY_RULE_SETUP
-#line 184 "html.l"
+#line 190 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_BDO_OPEN;
@@ -1980,7 +1989,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 139:
 YY_RULE_SETUP
-#line 188 "html.l"
+#line 194 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_BIG_OPEN;
@@ -1988,7 +1997,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 140:
 YY_RULE_SETUP
-#line 192 "html.l"
+#line 198 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_BLOCKQUOTE_OPEN;
@@ -1996,7 +2005,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 141:
 YY_RULE_SETUP
-#line 196 "html.l"
+#line 202 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_BODY_OPEN;
@@ -2004,7 +2013,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 142:
 YY_RULE_SETUP
-#line 200 "html.l"
+#line 206 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_BR_OPEN;
@@ -2012,7 +2021,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 143:
 YY_RULE_SETUP
-#line 204 "html.l"
+#line 210 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_BUTTON_OPEN;
@@ -2020,7 +2029,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 144:
 YY_RULE_SETUP
-#line 208 "html.l"
+#line 214 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_CANVAS_OPEN;
@@ -2028,7 +2037,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 145:
 YY_RULE_SETUP
-#line 212 "html.l"
+#line 218 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_CAPTION_OPEN;
@@ -2036,7 +2045,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 146:
 YY_RULE_SETUP
-#line 216 "html.l"
+#line 222 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_CENTER_OPEN;
@@ -2044,7 +2053,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 147:
 YY_RULE_SETUP
-#line 220 "html.l"
+#line 226 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_CITE_OPEN;
@@ -2052,7 +2061,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 148:
 YY_RULE_SETUP
-#line 224 "html.l"
+#line 230 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_CODE_OPEN;
@@ -2060,7 +2069,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 149:
 YY_RULE_SETUP
-#line 228 "html.l"
+#line 234 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_COL_OPEN;
@@ -2068,7 +2077,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 150:
 YY_RULE_SETUP
-#line 232 "html.l"
+#line 238 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_COLGROUP_OPEN;
@@ -2076,7 +2085,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 151:
 YY_RULE_SETUP
-#line 236 "html.l"
+#line 242 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_DATA_OPEN;
@@ -2084,7 +2093,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 152:
 YY_RULE_SETUP
-#line 240 "html.l"
+#line 246 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_DATALIST_OPEN;
@@ -2092,7 +2101,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 153:
 YY_RULE_SETUP
-#line 244 "html.l"
+#line 250 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_DD_OPEN;
@@ -2100,7 +2109,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 154:
 YY_RULE_SETUP
-#line 248 "html.l"
+#line 254 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_DEL_OPEN;
@@ -2108,7 +2117,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 155:
 YY_RULE_SETUP
-#line 252 "html.l"
+#line 258 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_DETAILS_OPEN;
@@ -2116,7 +2125,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 156:
 YY_RULE_SETUP
-#line 256 "html.l"
+#line 262 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_DFN_OPEN;
@@ -2124,7 +2133,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 157:
 YY_RULE_SETUP
-#line 260 "html.l"
+#line 266 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_DIALOG_OPEN;
@@ -2132,7 +2141,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 158:
 YY_RULE_SETUP
-#line 264 "html.l"
+#line 270 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_DIR_OPEN;
@@ -2140,7 +2149,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 159:
 YY_RULE_SETUP
-#line 268 "html.l"
+#line 274 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_DIV_OPEN;
@@ -2148,7 +2157,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 160:
 YY_RULE_SETUP
-#line 272 "html.l"
+#line 278 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_DL_OPEN;
@@ -2156,7 +2165,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 161:
 YY_RULE_SETUP
-#line 276 "html.l"
+#line 282 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_DT_OPEN;
@@ -2164,7 +2173,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 162:
 YY_RULE_SETUP
-#line 280 "html.l"
+#line 286 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_EM_OPEN;
@@ -2172,7 +2181,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 163:
 YY_RULE_SETUP
-#line 284 "html.l"
+#line 290 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_EMBED_OPEN;
@@ -2180,7 +2189,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 164:
 YY_RULE_SETUP
-#line 288 "html.l"
+#line 294 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_FIELDSET_OPEN;
@@ -2188,7 +2197,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 165:
 YY_RULE_SETUP
-#line 292 "html.l"
+#line 298 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_FIGCAPTION_OPEN;
@@ -2196,7 +2205,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 166:
 YY_RULE_SETUP
-#line 296 "html.l"
+#line 302 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_FIGURE_OPEN;
@@ -2204,7 +2213,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 167:
 YY_RULE_SETUP
-#line 300 "html.l"
+#line 306 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_FONT_OPEN;
@@ -2212,7 +2221,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 168:
 YY_RULE_SETUP
-#line 304 "html.l"
+#line 310 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_FOOTER_OPEN;
@@ -2220,7 +2229,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 169:
 YY_RULE_SETUP
-#line 308 "html.l"
+#line 314 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_FORM_OPEN;
@@ -2228,7 +2237,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 170:
 YY_RULE_SETUP
-#line 312 "html.l"
+#line 318 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_FRAME_OPEN;
@@ -2236,7 +2245,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 171:
 YY_RULE_SETUP
-#line 316 "html.l"
+#line 322 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_FRAMESET_OPEN;
@@ -2244,7 +2253,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 172:
 YY_RULE_SETUP
-#line 320 "html.l"
+#line 326 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_H1_OPEN;
@@ -2252,7 +2261,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 173:
 YY_RULE_SETUP
-#line 324 "html.l"
+#line 330 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_H2_OPEN;
@@ -2260,7 +2269,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 174:
 YY_RULE_SETUP
-#line 328 "html.l"
+#line 334 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_H3_OPEN;
@@ -2268,7 +2277,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 175:
 YY_RULE_SETUP
-#line 332 "html.l"
+#line 338 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_H4_OPEN;
@@ -2276,7 +2285,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 176:
 YY_RULE_SETUP
-#line 336 "html.l"
+#line 342 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_H5_OPEN;
@@ -2284,7 +2293,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 177:
 YY_RULE_SETUP
-#line 340 "html.l"
+#line 346 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_H6_OPEN;
@@ -2292,7 +2301,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 178:
 YY_RULE_SETUP
-#line 344 "html.l"
+#line 350 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_HEAD_OPEN;
@@ -2300,7 +2309,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 179:
 YY_RULE_SETUP
-#line 348 "html.l"
+#line 354 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_HEADER_OPEN;
@@ -2308,7 +2317,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 180:
 YY_RULE_SETUP
-#line 352 "html.l"
+#line 358 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_HGROUP_OPEN;
@@ -2316,7 +2325,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 181:
 YY_RULE_SETUP
-#line 356 "html.l"
+#line 362 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_HR_OPEN;
@@ -2324,7 +2333,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 182:
 YY_RULE_SETUP
-#line 360 "html.l"
+#line 366 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_HTML_OPEN;
@@ -2332,7 +2341,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 183:
 YY_RULE_SETUP
-#line 364 "html.l"
+#line 370 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_I_OPEN;
@@ -2340,7 +2349,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 184:
 YY_RULE_SETUP
-#line 368 "html.l"
+#line 374 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_IFRAME_OPEN;
@@ -2348,7 +2357,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 185:
 YY_RULE_SETUP
-#line 372 "html.l"
+#line 378 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_IMG_OPEN;
@@ -2356,7 +2365,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 186:
 YY_RULE_SETUP
-#line 376 "html.l"
+#line 382 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_INPUT_OPEN;
@@ -2364,7 +2373,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 187:
 YY_RULE_SETUP
-#line 380 "html.l"
+#line 386 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_INS_OPEN;
@@ -2372,7 +2381,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 188:
 YY_RULE_SETUP
-#line 384 "html.l"
+#line 390 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_KBD_OPEN;
@@ -2380,7 +2389,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 189:
 YY_RULE_SETUP
-#line 388 "html.l"
+#line 394 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_LABEL_OPEN;
@@ -2388,7 +2397,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 190:
 YY_RULE_SETUP
-#line 392 "html.l"
+#line 398 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_LEGEND_OPEN;
@@ -2396,7 +2405,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 191:
 YY_RULE_SETUP
-#line 396 "html.l"
+#line 402 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_LI_OPEN;
@@ -2404,7 +2413,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 192:
 YY_RULE_SETUP
-#line 400 "html.l"
+#line 406 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_LINK_OPEN;
@@ -2412,7 +2421,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 193:
 YY_RULE_SETUP
-#line 404 "html.l"
+#line 410 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_MAIN_OPEN;
@@ -2420,7 +2429,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 194:
 YY_RULE_SETUP
-#line 408 "html.l"
+#line 414 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_MAP_OPEN;
@@ -2428,7 +2437,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 195:
 YY_RULE_SETUP
-#line 412 "html.l"
+#line 418 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_MARK_OPEN;
@@ -2436,7 +2445,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 196:
 YY_RULE_SETUP
-#line 416 "html.l"
+#line 422 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_MENU_OPEN;
@@ -2444,7 +2453,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 197:
 YY_RULE_SETUP
-#line 420 "html.l"
+#line 426 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_META_OPEN;
@@ -2452,7 +2461,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 198:
 YY_RULE_SETUP
-#line 424 "html.l"
+#line 430 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_METER_OPEN;
@@ -2460,7 +2469,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 199:
 YY_RULE_SETUP
-#line 428 "html.l"
+#line 434 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_NAV_OPEN;
@@ -2468,7 +2477,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 200:
 YY_RULE_SETUP
-#line 432 "html.l"
+#line 438 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_NOFRAMES_OPEN;
@@ -2476,7 +2485,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 201:
 YY_RULE_SETUP
-#line 436 "html.l"
+#line 442 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_NOSCRIPT_OPEN;
@@ -2484,7 +2493,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 202:
 YY_RULE_SETUP
-#line 440 "html.l"
+#line 446 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_OBJECT_OPEN;
@@ -2492,7 +2501,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 203:
 YY_RULE_SETUP
-#line 444 "html.l"
+#line 450 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_OL_OPEN;
@@ -2500,7 +2509,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 204:
 YY_RULE_SETUP
-#line 448 "html.l"
+#line 454 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_OPTGROUP_OPEN;
@@ -2508,7 +2517,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 205:
 YY_RULE_SETUP
-#line 452 "html.l"
+#line 458 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_OPTION_OPEN;
@@ -2516,7 +2525,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 206:
 YY_RULE_SETUP
-#line 456 "html.l"
+#line 462 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_OUTPUT_OPEN;
@@ -2524,7 +2533,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 207:
 YY_RULE_SETUP
-#line 460 "html.l"
+#line 466 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_P_OPEN;
@@ -2532,7 +2541,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 208:
 YY_RULE_SETUP
-#line 464 "html.l"
+#line 470 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_PARAM_OPEN;
@@ -2540,7 +2549,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 209:
 YY_RULE_SETUP
-#line 468 "html.l"
+#line 474 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_PICTURE_OPEN;
@@ -2548,7 +2557,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 210:
 YY_RULE_SETUP
-#line 472 "html.l"
+#line 478 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_PRE_OPEN;
@@ -2556,7 +2565,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 211:
 YY_RULE_SETUP
-#line 476 "html.l"
+#line 482 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_PROGRESS_OPEN;
@@ -2564,7 +2573,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 212:
 YY_RULE_SETUP
-#line 480 "html.l"
+#line 486 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_Q_OPEN;
@@ -2572,7 +2581,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 213:
 YY_RULE_SETUP
-#line 484 "html.l"
+#line 490 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_RP_OPEN;
@@ -2580,7 +2589,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 214:
 YY_RULE_SETUP
-#line 488 "html.l"
+#line 494 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_RT_OPEN;
@@ -2588,7 +2597,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 215:
 YY_RULE_SETUP
-#line 492 "html.l"
+#line 498 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_RUBY_OPEN;
@@ -2596,7 +2605,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 216:
 YY_RULE_SETUP
-#line 496 "html.l"
+#line 502 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_S_OPEN;
@@ -2604,7 +2613,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 217:
 YY_RULE_SETUP
-#line 500 "html.l"
+#line 506 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_SAMP_OPEN;
@@ -2612,7 +2621,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 218:
 YY_RULE_SETUP
-#line 504 "html.l"
+#line 510 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_SCRIPT_OPEN;
@@ -2620,7 +2629,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 219:
 YY_RULE_SETUP
-#line 508 "html.l"
+#line 514 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_SEARCH_OPEN;
@@ -2628,7 +2637,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 220:
 YY_RULE_SETUP
-#line 512 "html.l"
+#line 518 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_SECTION_OPEN;
@@ -2636,7 +2645,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 221:
 YY_RULE_SETUP
-#line 516 "html.l"
+#line 522 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_SELECT_OPEN;
@@ -2644,7 +2653,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 222:
 YY_RULE_SETUP
-#line 520 "html.l"
+#line 526 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_SMALL_OPEN;
@@ -2652,7 +2661,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 223:
 YY_RULE_SETUP
-#line 524 "html.l"
+#line 530 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_SOURCE_OPEN;
@@ -2660,7 +2669,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 224:
 YY_RULE_SETUP
-#line 528 "html.l"
+#line 534 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_SPAN_OPEN;
@@ -2668,7 +2677,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 225:
 YY_RULE_SETUP
-#line 532 "html.l"
+#line 538 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_STRIKE_OPEN;
@@ -2676,7 +2685,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 226:
 YY_RULE_SETUP
-#line 536 "html.l"
+#line 542 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_STRONG_OPEN;
@@ -2684,7 +2693,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 227:
 YY_RULE_SETUP
-#line 540 "html.l"
+#line 546 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_STYLE_OPEN;
@@ -2692,7 +2701,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 228:
 YY_RULE_SETUP
-#line 544 "html.l"
+#line 550 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_SUB_OPEN;
@@ -2700,7 +2709,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 229:
 YY_RULE_SETUP
-#line 548 "html.l"
+#line 554 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_SUMMARY_OPEN;
@@ -2708,7 +2717,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 230:
 YY_RULE_SETUP
-#line 552 "html.l"
+#line 558 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_SUP_OPEN;
@@ -2716,7 +2725,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 231:
 YY_RULE_SETUP
-#line 556 "html.l"
+#line 562 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_SVG_OPEN;
@@ -2724,7 +2733,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 232:
 YY_RULE_SETUP
-#line 560 "html.l"
+#line 566 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_TABLE_OPEN;
@@ -2732,7 +2741,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 233:
 YY_RULE_SETUP
-#line 564 "html.l"
+#line 570 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_TBODY_OPEN;
@@ -2740,7 +2749,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 234:
 YY_RULE_SETUP
-#line 568 "html.l"
+#line 574 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_TD_OPEN;
@@ -2748,7 +2757,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 235:
 YY_RULE_SETUP
-#line 572 "html.l"
+#line 578 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_TEMPLATE_OPEN;
@@ -2756,7 +2765,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 236:
 YY_RULE_SETUP
-#line 576 "html.l"
+#line 582 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_TEXTAREA_OPEN;
@@ -2764,7 +2773,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 237:
 YY_RULE_SETUP
-#line 580 "html.l"
+#line 586 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_TFOOT_OPEN;
@@ -2772,7 +2781,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 238:
 YY_RULE_SETUP
-#line 584 "html.l"
+#line 590 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_TH_OPEN;
@@ -2780,7 +2789,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 239:
 YY_RULE_SETUP
-#line 588 "html.l"
+#line 594 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_THEAD_OPEN;
@@ -2788,7 +2797,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 240:
 YY_RULE_SETUP
-#line 592 "html.l"
+#line 598 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_TIME_OPEN;
@@ -2796,7 +2805,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 241:
 YY_RULE_SETUP
-#line 596 "html.l"
+#line 602 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_TITLE_OPEN;
@@ -2804,7 +2813,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 242:
 YY_RULE_SETUP
-#line 600 "html.l"
+#line 606 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_TR_OPEN;
@@ -2812,7 +2821,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 243:
 YY_RULE_SETUP
-#line 604 "html.l"
+#line 610 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_TRACK_OPEN;
@@ -2820,7 +2829,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 244:
 YY_RULE_SETUP
-#line 608 "html.l"
+#line 614 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_TT_OPEN;
@@ -2828,7 +2837,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 245:
 YY_RULE_SETUP
-#line 612 "html.l"
+#line 618 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_U_OPEN;
@@ -2836,7 +2845,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 246:
 YY_RULE_SETUP
-#line 616 "html.l"
+#line 622 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_UL_OPEN;
@@ -2844,7 +2853,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 247:
 YY_RULE_SETUP
-#line 620 "html.l"
+#line 626 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_VAR_OPEN;
@@ -2852,7 +2861,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 248:
 YY_RULE_SETUP
-#line 624 "html.l"
+#line 630 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_VIDEO_OPEN;
@@ -2860,7 +2869,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 249:
 YY_RULE_SETUP
-#line 628 "html.l"
+#line 634 "html.l"
 {
         in_open_tag = true;
         return HTML_TT_WBR_OPEN;
@@ -2868,12 +2877,12 @@ YY_RULE_SETUP
 	YY_BREAK
 case 250:
 YY_RULE_SETUP
-#line 632 "html.l"
+#line 638 "html.l"
 { return HTML_TT_COMMENT_CLOSE; }
 	YY_BREAK
 case 251:
 YY_RULE_SETUP
-#line 633 "html.l"
+#line 639 "html.l"
 {
         in_open_tag = false;
         return HTML_TT_OPEN_DONE;
@@ -2882,23 +2891,20 @@ YY_RULE_SETUP
 case 252:
 /* rule 252 can match eol */
 YY_RULE_SETUP
-#line 637 "html.l"
+#line 643 "html.l"
 {
         if (!in_open_tag)
                 return HTML_TT_TEXT;
 
-        printf("%s\n", yytext);
         yymore();
 }
 	YY_BREAK
 case 253:
 YY_RULE_SETUP
-#line 644 "html.l"
+#line 649 "html.l"
 ECHO;
 	YY_BREAK
-#line 2900 "lex.yy.c"
-case YY_STATE_EOF(INITIAL):
-	yyterminate();
+#line 2908 "lex.yy.c"
 
 	case YY_END_OF_BUFFER:
 		{
@@ -3901,7 +3907,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 644 "html.l"
+#line 649 "html.l"
 
 
 int yywrap(void)

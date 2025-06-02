@@ -145,10 +145,7 @@ int main(void)
 {
         auto tt = 0;
 
-        while ((tt = yylex())) {
-                if (!is_tag(tt))
-                        continue;
-
+        while ((tt = yylex()) && !is_err(tt)) {
                 if (tt != HTML_TT_HTML_OPEN)
                         continue;
 

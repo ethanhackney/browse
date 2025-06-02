@@ -37,6 +37,9 @@ cat >>html.h <<EOF
         HTML_TT_TAG_END, /* end of tags */
         HTML_TT_OPEN_DONE, /* done with opening tag? */
         HTML_TT_TEXT, /* regular text */
+        HTML_TT_ERR_START, /* start of errors */
+        HTML_TT_TAG_UNTERM, /* unmterminated tag */
+        HTML_TT_ERR_END, /* end of errors */
         HTML_TT_COUNT, /* type count */
 };
 
@@ -61,6 +64,13 @@ is_close_tag(int tt)
         return HTML_TT_TAG_CLOSE_START < tt && tt < HTML_TT_TAG_CLOSE_END;
 }
 
+/* test if error token */
+static inline bool
+is_err(int tt)
+{
+        return HTML_TT_ERR_START < tt && tt < HTML_TT_ERR_END;
+}
+
 #endif /* #ifndef HTML_TT_H */
 EOF
 
@@ -76,6 +86,12 @@ static bool in_open_tag = false;
 %}
 
 %%
+<<EOF>> {
+        if (in_open_tag)
+                return HTML_TT_TAG_UNTERM;
+
+        return 0;
+}
 EOF
 
 # generate flex for close tag
@@ -100,14 +116,10 @@ cat >>html.l <<EOF
         in_open_tag = false;
         return HTML_TT_OPEN_DONE;
 }
-EOF
-
-cat >>html.l <<EOF
 .|\n {
         if (!in_open_tag)
                 return HTML_TT_TEXT;
 
-        printf("%s\n", yytext);
         yymore();
 }
 EOF
