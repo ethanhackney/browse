@@ -8,10 +8,13 @@ web socket
 http client
 
 # HTML5 compiler: https://html.spec.whatwg.org/multipage/
-html parser
+html compiler
 
 # css compiler: https://www.w3.org/TR/css-2024/#css-official 
-html/css renderer
+css compiler
+
+# renderer
+renderer
 
 # js interpreter: https://262.ecma-international.org/
 js interpreter
