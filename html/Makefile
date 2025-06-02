@@ -21,8 +21,10 @@ LDFLAGS = $(shell pkg-config --libs cairo x11)
 SFLAGS = $(CFLAGS) -fsanitize=address,undefined
 SLDFLAGS = $(LDFLAGS) -fsanitize=address,undefined
 
-safe: yy.o tags.h
-	g++ -std=c++11 $(SFLAGS) -o slow main.cc yy.o $(SLDFLAGS)
+ELEM_SRC = elem/src/internal.cc elem/src/text.cc elem/src/html.cc
+
+safe: yy.o tags.h $(ELEM_SRC)
+	g++ -std=c++11 $(SFLAGS) -o slow $(ELEM_SRC) main.cc yy.o $(SLDFLAGS)
 	rm yy.o
 
 yy.o: lex.yy.c

@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "elem/include/elem.h"
 #include "html.h"
 #include <cstring>
 #include <cstddef>
@@ -15,9 +16,7 @@ int main(void)
         auto tt = 0;
 
         while ((tt = yylex())) {
-                if (istag(tt))
-                        printf("tag: %s\n", yytext);
-                else
-                        printf("text: '%s'\n", yytext);
+                if (tt != HTML_TT_HTML_OPEN)
+                        continue;
         }
 }
