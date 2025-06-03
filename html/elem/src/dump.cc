@@ -245,7 +245,7 @@ void html_elem_dump_visitor::visit(const html_text_elem &elem)
         std::string s {"\"c\": \""};
         switch (elem.c()) {
         case '\n':
-                s += "\n";
+                s += "\\n";
                 break;
         default:
                 s += elem.c();

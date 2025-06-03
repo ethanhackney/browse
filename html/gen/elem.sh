@@ -5,9 +5,10 @@ cd "$(dirname "$0")"
 INCLUDE=../elem/include
 SRC=../elem/src
 
-if [ -f $INCLUDE/visitor.h ]; then
-  exit 0
-fi
+# already generated
+# if [ -f $INCLUDE/visitor.h ]; then
+#   exit 0
+# fi
 
 # read in tags
 mapfile -t elems <tagtab
@@ -17,6 +18,7 @@ mapfile -t elems <tagtab
 #   html
 # )
 
+# generate first part of visitor
 cat >$INCLUDE/visitor.h <<EOF
 // AUTO-GENERATED
 
@@ -26,6 +28,7 @@ cat >$INCLUDE/visitor.h <<EOF
 class html_text_elem;
 EOF
 
+# generate first part of cvisitor
 cat >$INCLUDE/cvisitor.h <<EOF
 // AUTO-GENERATED
 
@@ -35,11 +38,13 @@ cat >$INCLUDE/cvisitor.h <<EOF
 class html_text_elem;
 EOF
 
+# generate forward declarations for visitors
 for elem in "${elems[@]}"; do
   echo "class html_${elem}_elem;" >>$INCLUDE/visitor.h
   echo "class html_${elem}_elem;" >>$INCLUDE/cvisitor.h
 done
 
+# generate dump visitor header
 cat >$INCLUDE/dump.h <<EOF
 // AUTO-GENERATED
 
@@ -80,10 +85,12 @@ public:
 
 EOF
 
+# generate dump visitor visit method for each element type
 for elem in "${elems[@]}"; do
   echo -e "\tvoid visit(const html_${elem}_elem &elem);" >>$INCLUDE/dump.h
 done
 
+# finalize dump header
 cat >>$INCLUDE/dump.h <<EOF
         void visit(const html_text_elem &elem);
 };
@@ -91,14 +98,18 @@ cat >>$INCLUDE/dump.h <<EOF
 #endif // #ifndef HTML_ELEM_DUMP_VISITOR_H
 EOF
 
+# generate first part of dump visitor source
 cat >$SRC/dump.cc <<EOF
 // AUTO-GENERATED
 
 EOF
+
+# generate includes for element types
 for elem in "${elems[@]}"; do
   echo "#include \"../include/${elem}.h\"" >>$SRC/dump.cc
 done
 
+# generate the non automatic code
 cat >>$SRC/dump.cc <<EOF
 #include "../include/dump.h"
 #include <iostream>
@@ -221,7 +232,7 @@ void html_elem_dump_visitor::visit(const html_text_elem &elem)
         std::string s {"\"c\": \""};
         switch (elem.c()) {
         case '\n':
-                s += "\\n";
+                s += "\\\\n";
                 break;
         default:
                 s += elem.c();
@@ -235,29 +246,37 @@ void html_elem_dump_visitor::visit(const html_text_elem &elem)
 }
 EOF
 
+# prepare for visitor methods
 cat >>$INCLUDE/visitor.h <<EOF
 
 class html_elem_visitor {
 public:
 EOF
+
+# prepare for cvisitor methods
 cat >>$INCLUDE/cvisitor.h <<EOF
 
 class html_elem_cvisitor {
 public:
 EOF
 
+# generate elements
 for elem in "${elems[@]}"; do
+  # remove what is there
   rm -f "elem/include/${elem}.h"
   rm -f "elem/src/${elem}.cc"
 
+  # generate visitor method for this element
   cat >>$INCLUDE/visitor.h <<EOF
         virtual void visit(html_${elem}_elem &elem) = 0;
 EOF
 
+  # generate cvisitor method for this element
   cat >>$INCLUDE/cvisitor.h <<EOF
         virtual void visit(const html_${elem}_elem &elem) = 0;
 EOF
 
+  # generate dump visit method for this element
   cat >>$SRC/dump.cc <<EOF
 
 void html_elem_dump_visitor::visit(const html_${elem}_elem &elem)
@@ -266,6 +285,7 @@ void html_elem_dump_visitor::visit(const html_${elem}_elem &elem)
 }
 EOF
 
+  # generate element header file
   cat >$INCLUDE/${elem}.h <<EOF
 #ifndef HTML_ELEM_${elem^^}_H
 #define HTML_ELEM_${elem^^}_H
@@ -284,6 +304,7 @@ public:
 #endif // HTML_ELEM_${elem^^}_H
 EOF
 
+  # generate element source
   cat >$SRC/${elem}.cc <<EOF
 #include "../include/${elem}.h"
 
@@ -307,15 +328,100 @@ void html_${elem}_elem::visit(html_elem_cvisitor &v) const
 EOF
 done
 
+# finalize visitor header
 cat >>$INCLUDE/visitor.h <<EOF
         virtual void visit(html_text_elem &elem) = 0;
 };
 
 #endif // #ifndef HTML_ELEM_VISITOR_H
 EOF
+
+# finalize cvisitor header
 cat >>$INCLUDE/cvisitor.h <<EOF
         virtual void visit(const html_text_elem &elem) = 0;
 };
 
 #endif // #ifndef HTML_ELEM_CVISITOR_H
+EOF
+
+# generate first part of factory header
+cat >$INCLUDE/factory.h <<EOF
+#ifndef HTML_ELEM_FACTORY_H
+#define HTML_ELEM_FACTORY_H
+
+#include "text.h"
+EOF
+
+# generate includes for each type
+for elem in "${elems[@]}"; do
+  echo "#include \"${elem}.h\"" >>$INCLUDE/factory.h
+done
+
+# prepare for factory methods
+cat >>$INCLUDE/factory.h <<EOF
+// AUTO-GENERATED
+
+// html_elem factory
+class html_elem_factory {
+public:
+EOF
+
+# generate factory methods
+for elem in "${elems[@]}"; do
+  fn_name="$elem"
+
+  # if element name conflicts with c++ keyword
+  if [ "$elem" = "template" ]; then
+    fn_name=template_elem
+  fi
+  if [ "$elem" = "main" ]; then
+    fn_name=main_elem
+  fi
+
+  echo -e "\tstd::shared_ptr<html_${elem}_elem> ${fn_name}(void);" >>$INCLUDE/factory.h
+done
+
+# finalize factory header
+cat >>$INCLUDE/factory.h <<EOF
+        std::shared_ptr<html_text_elem> text(int c);
+};
+
+#endif // #ifndef HTML_ELEM_FACTORY_H
+EOF
+
+# first part of factory source
+cat >$SRC/factory.cc <<EOF
+// AUTO-GENERATED
+
+#include "../include/factory.h"
+EOF
+
+for elem in "${elems[@]}"; do
+  fn_name="$elem"
+
+  # if element name conflicts with c++ keyword
+  if [ "$elem" = "template" ]; then
+    fn_name=template_elem
+  fi
+  if [ "$elem" = "main" ]; then
+    fn_name=main_elem
+  fi
+
+  # generate method
+  cat >>$SRC/factory.cc <<EOF
+
+std::shared_ptr<html_${elem}_elem> html_elem_factory::${fn_name}(void)
+{
+        return std::shared_ptr<html_${elem}_elem> {new html_${elem}_elem{}};
+}
+EOF
+done
+
+# finalize factory source
+cat >>$SRC/factory.cc <<EOF
+
+std::shared_ptr<html_text_elem> html_elem_factory::text(int c)
+{
+        return std::shared_ptr<html_text_elem> {new html_text_elem{c}};
+}
 EOF
