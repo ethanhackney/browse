@@ -31,12 +31,12 @@ obj/tabs.o: gen/okattr.awk
 	./gen/okattr.awk gen/okattrtab >tabs.c
 	gcc $(CFLAGS) -c -o $@ tabs.c
 
-yy.o: lex.yy.c
-	gcc -c -o $@ $^
+yy.o: lex.yy.cc
+	g++ -c -o $@ $^
 
-lex.yy.c: gen/lex.sh gen/tagtab gen/attrtab
+lex.yy.cc: gen/lex.sh gen/tagtab gen/attrtab
 	./gen/lex.sh
-	flex html.l
+	flex -o lex.yy.cc html.ll
 
 fast: yy.o main.cc $(ELEM_OBJ) obj/tabs.o
 	g++ --std=c++11 $(CFLAGS) -o fast -O3 $^ $(LDFLAGS)

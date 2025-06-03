@@ -1,4 +1,5 @@
 #include "elem/include/dump.h"
+#include "FlexLexer.h"
 #include "elem/include/factory.h"
 #include "tabs.h"
 #include "html.h"
@@ -8,18 +9,13 @@
 #include <unordered_set>
 #include <memory>
 
-extern "C" {
-extern char *yytext;
-extern int yyleng;
-int yylex(void);
-}
-
 int main(void)
 {
         html_elem_factory f;
+        yyFlexLexer lex;
 
         auto tt = 0;
-        while ((tt = yylex()) && !is_err(tt)) {
+        while ((tt = lex.yylex()) && !is_err(tt)) {
                 if (tt != HTML_TT_TAG_HTML_OPEN)
                         continue;
 
@@ -27,13 +23,13 @@ int main(void)
                         auto hp = f.html();
                         auto tag = tt;
 
-                        while ((tt = yylex()) != HTML_TT_TAG_OPEN_DONE) {
+                        while ((tt = lex.yylex()) != HTML_TT_TAG_OPEN_DONE) {
                                 if (!attr_ok(tag, tt))
                                         puts("error");
                         }
 
-                        while ((tt = yylex()) == HTML_TT_TEXT)
-                                hp.get()->append_child(f.text(*yytext));
+                        while ((tt = lex.yylex()) == HTML_TT_TEXT)
+                                hp.get()->append_child(f.text(*lex.YYText()));
 
                         html_elem_dump_visitor dump {};
                         dump.visit(*hp.get());
