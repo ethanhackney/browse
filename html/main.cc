@@ -17,17 +17,18 @@ int yylex(void);
 int main(void)
 {
         html_elem_factory f;
-        auto tt = 0;
 
+        auto tt = 0;
         while ((tt = yylex()) && !is_err(tt)) {
                 if (tt != HTML_TT_TAG_HTML_OPEN)
                         continue;
 
                 try {
                         auto hp = f.html();
+                        auto tag = tt;
 
                         while ((tt = yylex()) != HTML_TT_TAG_OPEN_DONE) {
-                                if (!is_attr(tt))
+                                if (!attr_ok(tag, tt))
                                         puts("error");
                         }
 
