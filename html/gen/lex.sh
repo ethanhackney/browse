@@ -11,6 +11,7 @@ mapfile -t attrs <attrtab
 # generate start of ../html.h
 cat >../html.h <<EOF
 /* AUTO-GENERATED */
+
 #ifndef HTML_TT_H
 #define HTML_TT_H
 
@@ -21,26 +22,33 @@ enum {
         HTML_TT_TAG_START = 1, /* start of tags */
 EOF
 
+# tokens
+toks=()
+
 # generate open tags
-echo -e "\tHTML_TT_TAG_OPEN_START, /* start of open tags */" >>../html.h
-echo -e "\tHTML_TT_TAG_DOCTYPE, /* <!DOCTYPE> */" >>../html.h
+echo -e "        HTML_TT_TAG_OPEN_START, /* start of open tags */" >>../html.h
+echo -e "        HTML_TT_TAG_DOCTYPE, /* <!DOCTYPE> */" >>../html.h
 for tag in "${tags[@]}"; do
-  echo -e "\tHTML_TT_TAG_${tag^^}_OPEN, /* <${tag}> */" >>../html.h
+  echo -e "        HTML_TT_TAG_${tag^^}_OPEN, /* <${tag}> */" >>../html.h
+  toks+=("HTML_TT_TAG_${tag^^}_OPEN")
 done
-echo -e "\tHTML_TT_TAG_COMMENT_OPEN, /* <!-- */" >>../html.h
-echo -e "\tHTML_TT_TAG_OPEN_END, /* end of open tags */" >>../html.h
-echo -e "\tHTML_TT_TAG_END, /* end of tags */" >>../html.h
+echo -e "        HTML_TT_TAG_COMMENT_OPEN, /* <!-- */" >>../html.h
+echo -e "        HTML_TT_TAG_OPEN_END, /* end of open tags */" >>../html.h
+toks+=("HTML_TT_TAG_COMMENT_OPEN" "HTML_TT_TAG_OPEN_END")
 
 # generate close tags
-echo -e "\tHTML_TT_TAG_CLOSE_START, /* start of close tags */" >>../html.h
+echo -e "        HTML_TT_TAG_CLOSE_START, /* start of close tags */" >>../html.h
 for tag in "${tags[@]}"; do
-  echo -e "\tHTML_TT_TAG_${tag^^}_CLOSE, /* </${tag}> */" >>../html.h
+  echo -e "        HTML_TT_TAG_${tag^^}_CLOSE, /* </${tag}> */" >>../html.h
+  toks+=("HTML_TT_TAG_${tag^^}_CLOSE")
 done
-echo -e "\tHTML_TT_TAG_COMMENT_CLOSE, /* --> */" >>../html.h
-echo -e "\tHTML_TT_TAG_CLOSE_END, /* end of close tags */" >>../html.h
+echo -e "        HTML_TT_TAG_COMMENT_CLOSE, /* --> */" >>../html.h
+echo -e "        HTML_TT_TAG_CLOSE_END, /* end of close tags */" >>../html.h
+echo -e "        HTML_TT_TAG_END, /* end of tags */" >>../html.h
+toks+=("HTML_TT_TAG_COMMENT_CLOSE" "HTML_TT_TAG_CLOSE_END" "HTML_TT_TAG_END")
 
 # generate attributes
-echo -e "\tHTML_TT_ATTR_START, /* start of attributes */" >>../html.h
+echo -e "        HTML_TT_ATTR_START, /* start of attributes */" >>../html.h
 for attr in "${attrs[@]}"; do
   name=$attr
   if [ $attr = 'accept-charset' ]; then
@@ -52,9 +60,10 @@ for attr in "${attrs[@]}"; do
   if [ $attr = 'start' ]; then
     name='START_ATTR'
   fi
-  echo -e "\tHTML_TT_ATTR_${name^^}, /* ${attr} */" >>../html.h
+  echo -e "        HTML_TT_ATTR_${name^^}, /* ${attr} */" >>../html.h
+  toks+=("HTML_TT_ATTR_${name^^}")
 done
-echo -e "\tHTML_TT_ATTR_END, /* end of attributes */" >>../html.h
+echo -e "        HTML_TT_ATTR_END, /* end of attributes */" >>../html.h
 
 # generate end of ../html.h
 cat >>../html.h <<EOF
@@ -99,6 +108,29 @@ static inline bool
 is_attr(int tt)
 {
         return HTML_TT_ATTR_START < tt && tt < HTML_TT_ATTR_END;
+}
+
+/* get token type name */
+static inline const char *
+tok_name(int tt)
+{
+EOF
+toks+=(
+  "HTML_TT_TAG_OPEN_DONE"
+  "HTML_TT_TEXT"
+  "HTML_TT_ERR_START"
+  "HTML_TT_ERR_TAG_UNTERM"
+  "HTML_TT_ERR_END"
+)
+
+echo "        static const char *token_names[HTML_TT_COUNT] = {" >>../html.h
+for tok in "${toks[@]}"; do
+  echo -e "        \"$tok\"," >>../html.h
+done
+echo "        };" >>../html.h
+
+cat >>../html.h <<EOF
+        return token_names[tt];
 }
 
 #endif /* #ifndef HTML_TT_H */

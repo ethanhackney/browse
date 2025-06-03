@@ -35,6 +35,10 @@
 #   ["form"]  => 3
 #   ["input"] => 2
 
+BEGIN {
+  tags["html"] = 1
+}
+
 # build vertex for attribute:
 # 
 # args:
@@ -59,15 +63,15 @@ END {
 
   print "/* get actual attribute index */"
   print "#define ATTR_IDX(_attr) \\"
-  printf("\t((_attr) - HTML_TT_ATTR_START)\n")
+  printf("        ((_attr) - HTML_TT_ATTR_START)\n")
 
   print "/* get actual tag index */"
   print "#define TAG_IDX(_tag) \\"
-  printf("\t((_tag) - HTML_TT_TAG_OPEN_START)\n\n")
+  printf("        ((_tag) - HTML_TT_TAG_OPEN_START)\n\n")
 
   print "enum {"
-  printf("\tNR_OPEN = HTML_TT_TAG_OPEN_END - HTML_TT_TAG_OPEN_START + 1,\n")
-  printf("\tNR_ATTR = HTML_TT_ATTR_END - HTML_TT_ATTR_START + 1,\n")
+  printf("        NR_OPEN = HTML_TT_TAG_OPEN_END - HTML_TT_TAG_OPEN_START + 1,\n")
+  printf("        NR_ATTR = HTML_TT_ATTR_END - HTML_TT_ATTR_START + 1,\n")
   print "};\n"
 
   # for each vertex in dag
@@ -95,20 +99,20 @@ END {
   # for each tag
   for (tag in tags) {
     # generate array index for tag
-    printf("\t[TAG_IDX(HTML_TT_TAG_%s_OPEN)] = {\n", toupper(tag))
+    printf("        [TAG_IDX(HTML_TT_TAG_%s_OPEN)] = {\n", toupper(tag))
 
     # generate array index for attributes supported by tag
     for (i = 1; i <= nattrs_ok[tag]; i++)
-      printf("\t\t[ATTR_IDX(HTML_TT_ATTR_%s)] = true,\n", toupper(attrs_ok[tag,i]))
+      printf("                [ATTR_IDX(HTML_TT_ATTR_%s)] = true,\n", toupper(attrs_ok[tag,i]))
 
     # finalize mapping for tag
-    printf("\t},\n")
+    printf("        },\n")
   }
   printf("};\n\n")
 
   print "bool"
   print "attr_ok(int tag, int attr)"
   print "{"
-  printf("\treturn attrs_ok[TAG_IDX(tag)][ATTR_IDX(attr)];\n")
+  printf("        return attrs_ok[TAG_IDX(tag)][ATTR_IDX(attr)];\n")
   print "}"
 }

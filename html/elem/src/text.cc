@@ -50,3 +50,24 @@ void html_text_elem::append_child(std::shared_ptr<html_elem> elem)
 void html_text_elem::rm_child(std::size_t i)
 {
 }
+
+void html_text_elem::attr_add(int type, const std::string &val)
+{
+}
+
+std::size_t html_text_elem::attr_len(void) const
+{
+        return 0;
+}
+
+const std::string &html_text_elem::attr_get_by_idx(std::size_t i) const
+{
+        static const std::string empty {""};
+        return empty;
+}
+
+const std::string &html_text_elem::attr_get_by_type(int type) const
+{
+        static const std::string empty {""};
+        return empty;
+}

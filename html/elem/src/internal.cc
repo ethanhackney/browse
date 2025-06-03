@@ -32,3 +32,33 @@ void html_internal_elem::rm_child(size_t i)
 {
         _kids.erase(_kids.begin() + i);
 }
+
+void html_internal_elem::attr_add(int type, const std::string &val)
+{
+        if (_attrmap.find(type) == _attrmap.end())
+                _attr.push_back(type);
+
+        _attrmap[type] = val;
+}
+
+std::size_t html_internal_elem::attr_len(void) const
+{
+        return _attr.size();
+}
+
+const std::string &html_internal_elem::attr_get_by_idx(std::size_t i) const
+{
+        return attr_get_by_type(_attr.at(i));
+}
+
+const std::string &html_internal_elem::attr_get_by_type(int type) const
+{
+        static const std::string empty {""};
+
+        auto p = _attrmap.find(type);
+
+        if (p != _attrmap.end())
+                return p->second;
+
+        return empty;
+}

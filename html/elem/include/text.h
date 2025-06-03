@@ -25,6 +25,10 @@ public:
         const std::shared_ptr<html_elem> get_cchild(std::size_t i) const;
         void append_child(std::shared_ptr<html_elem> elem);
         void rm_child(std::size_t i);
+        std::size_t attr_len(void) const;
+        const std::string &attr_get_by_idx(std::size_t i) const;
+        const std::string &attr_get_by_type(int type) const;
+        void attr_add(int type, const std::string &val);
         int c(void) const;
 };
 

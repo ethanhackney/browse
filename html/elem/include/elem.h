@@ -5,6 +5,7 @@
 #include "visitor.h"
 #include <cstdlib>
 #include <memory>
+#include <string>
 
 // abstract html element
 class html_elem {
@@ -87,6 +88,51 @@ public:
          *  none
          */
         virtual void rm_child(std::size_t i) = 0;
+
+        /**
+         * get number of attributes:
+         *
+         * args:
+         *  none
+         *
+         * ret:
+         *  number of attributes
+         */
+        virtual std::size_t attr_len(void) const = 0;
+
+        /**
+         * get attribute value by index:
+         *
+         * args:
+         *  @i: index of attribute
+         *
+         * ret:
+         *  number of attributes
+         */
+        virtual const std::string &attr_get_by_idx(std::size_t i) const = 0;
+
+        /**
+         * get attribute by type:
+         *
+         * args:
+         *  @type: attribute type
+         *
+         * ret:
+         *  number of attributes
+         */
+        virtual const std::string &attr_get_by_type(int type) const = 0;
+
+        /**
+         * add an attribute:
+         *
+         * args:
+         *  @type: attribute token type
+         *  @val:  value
+         *
+         * ret:
+         *  none
+         */
+        virtual void attr_add(int type, const std::string &val) = 0;
 };
 
 #endif // HTML_ELEM_H

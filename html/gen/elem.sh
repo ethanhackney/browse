@@ -87,7 +87,7 @@ EOF
 
 # generate dump visitor visit method for each element type
 for elem in "${elems[@]}"; do
-  echo -e "\tvoid visit(const html_${elem}_elem &elem);" >>$INCLUDE/dump.h
+  echo -e "        void visit(const html_${elem}_elem &elem);" >>$INCLUDE/dump.h
 done
 
 # finalize dump header
@@ -378,7 +378,7 @@ for elem in "${elems[@]}"; do
     fn_name=main_elem
   fi
 
-  echo -e "\tstd::shared_ptr<html_${elem}_elem> ${fn_name}(void);" >>$INCLUDE/factory.h
+  echo -e "        std::shared_ptr<html_${elem}_elem> ${fn_name}(void);" >>$INCLUDE/factory.h
 done
 
 # finalize factory header

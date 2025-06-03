@@ -1,1 +1,2 @@
-consider switching to re2c for lexer generator
+add comments outlining different exceptions for various functions
+switch one line comments to c++ style
