@@ -1,5 +1,5 @@
-#ifndef HTML_HTML_ELEM_H
-#define HTML_HTML_ELEM_H
+#ifndef HTML_ELEM_HTML_H
+#define HTML_ELEM_HTML_H
 
 #include "internal.h"
 
@@ -12,4 +12,4 @@ public:
         void visit(html_elem_cvisitor &v) const;
 };
 
-#endif // #ifndef HTML_HTML_ELEM_H
+#endif // HTML_ELEM_HTML_H

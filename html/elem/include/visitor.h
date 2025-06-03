@@ -1,36 +1,261 @@
+// AUTO-GENERATED
+
 #ifndef HTML_ELEM_VISITOR_H
 #define HTML_ELEM_VISITOR_H
 
-class html_html_elem;     // <html>
-class html_text_elem;     // text element
-class html_internal_elem; // internal element
+class html_text_elem;
+class html_a_elem;
+class html_abbr_elem;
+class html_acronym_elem;
+class html_address_elem;
+class html_applet_elem;
+class html_area_elem;
+class html_aside_elem;
+class html_audio_elem;
+class html_b_elem;
+class html_base_elem;
+class html_basefont_elem;
+class html_bdi_elem;
+class html_bdo_elem;
+class html_big_elem;
+class html_blockquote_elem;
+class html_body_elem;
+class html_br_elem;
+class html_button_elem;
+class html_canvas_elem;
+class html_caption_elem;
+class html_center_elem;
+class html_cite_elem;
+class html_code_elem;
+class html_col_elem;
+class html_colgroup_elem;
+class html_data_elem;
+class html_datalist_elem;
+class html_dd_elem;
+class html_del_elem;
+class html_details_elem;
+class html_dfn_elem;
+class html_dialog_elem;
+class html_dir_elem;
+class html_div_elem;
+class html_dl_elem;
+class html_dt_elem;
+class html_em_elem;
+class html_embed_elem;
+class html_fieldset_elem;
+class html_figcaption_elem;
+class html_figure_elem;
+class html_font_elem;
+class html_footer_elem;
+class html_form_elem;
+class html_frame_elem;
+class html_frameset_elem;
+class html_h1_elem;
+class html_h2_elem;
+class html_h3_elem;
+class html_h4_elem;
+class html_h5_elem;
+class html_h6_elem;
+class html_head_elem;
+class html_header_elem;
+class html_hgroup_elem;
+class html_hr_elem;
+class html_html_elem;
+class html_i_elem;
+class html_iframe_elem;
+class html_img_elem;
+class html_input_elem;
+class html_ins_elem;
+class html_kbd_elem;
+class html_label_elem;
+class html_legend_elem;
+class html_li_elem;
+class html_link_elem;
+class html_main_elem;
+class html_map_elem;
+class html_mark_elem;
+class html_menu_elem;
+class html_meta_elem;
+class html_meter_elem;
+class html_nav_elem;
+class html_noframes_elem;
+class html_noscript_elem;
+class html_object_elem;
+class html_ol_elem;
+class html_optgroup_elem;
+class html_option_elem;
+class html_output_elem;
+class html_p_elem;
+class html_param_elem;
+class html_picture_elem;
+class html_pre_elem;
+class html_progress_elem;
+class html_q_elem;
+class html_rp_elem;
+class html_rt_elem;
+class html_ruby_elem;
+class html_s_elem;
+class html_samp_elem;
+class html_script_elem;
+class html_search_elem;
+class html_section_elem;
+class html_select_elem;
+class html_small_elem;
+class html_source_elem;
+class html_span_elem;
+class html_strike_elem;
+class html_strong_elem;
+class html_style_elem;
+class html_sub_elem;
+class html_summary_elem;
+class html_sup_elem;
+class html_svg_elem;
+class html_table_elem;
+class html_tbody_elem;
+class html_td_elem;
+class html_template_elem;
+class html_textarea_elem;
+class html_tfoot_elem;
+class html_th_elem;
+class html_thead_elem;
+class html_time_elem;
+class html_title_elem;
+class html_tr_elem;
+class html_track_elem;
+class html_tt_elem;
+class html_u_elem;
+class html_ul_elem;
+class html_var_elem;
+class html_video_elem;
+class html_wbr_elem;
 
-// abstract html element visitor
 class html_elem_visitor {
 public:
-        virtual ~html_elem_visitor() {}
-
-        /**
-         * visit <html> element:
-         *
-         * args:
-         *  @elem: <html> element
-         *
-         * ret:
-         *  none
-         */
+        virtual void visit(html_a_elem &elem) = 0;
+        virtual void visit(html_abbr_elem &elem) = 0;
+        virtual void visit(html_acronym_elem &elem) = 0;
+        virtual void visit(html_address_elem &elem) = 0;
+        virtual void visit(html_applet_elem &elem) = 0;
+        virtual void visit(html_area_elem &elem) = 0;
+        virtual void visit(html_aside_elem &elem) = 0;
+        virtual void visit(html_audio_elem &elem) = 0;
+        virtual void visit(html_b_elem &elem) = 0;
+        virtual void visit(html_base_elem &elem) = 0;
+        virtual void visit(html_basefont_elem &elem) = 0;
+        virtual void visit(html_bdi_elem &elem) = 0;
+        virtual void visit(html_bdo_elem &elem) = 0;
+        virtual void visit(html_big_elem &elem) = 0;
+        virtual void visit(html_blockquote_elem &elem) = 0;
+        virtual void visit(html_body_elem &elem) = 0;
+        virtual void visit(html_br_elem &elem) = 0;
+        virtual void visit(html_button_elem &elem) = 0;
+        virtual void visit(html_canvas_elem &elem) = 0;
+        virtual void visit(html_caption_elem &elem) = 0;
+        virtual void visit(html_center_elem &elem) = 0;
+        virtual void visit(html_cite_elem &elem) = 0;
+        virtual void visit(html_code_elem &elem) = 0;
+        virtual void visit(html_col_elem &elem) = 0;
+        virtual void visit(html_colgroup_elem &elem) = 0;
+        virtual void visit(html_data_elem &elem) = 0;
+        virtual void visit(html_datalist_elem &elem) = 0;
+        virtual void visit(html_dd_elem &elem) = 0;
+        virtual void visit(html_del_elem &elem) = 0;
+        virtual void visit(html_details_elem &elem) = 0;
+        virtual void visit(html_dfn_elem &elem) = 0;
+        virtual void visit(html_dialog_elem &elem) = 0;
+        virtual void visit(html_dir_elem &elem) = 0;
+        virtual void visit(html_div_elem &elem) = 0;
+        virtual void visit(html_dl_elem &elem) = 0;
+        virtual void visit(html_dt_elem &elem) = 0;
+        virtual void visit(html_em_elem &elem) = 0;
+        virtual void visit(html_embed_elem &elem) = 0;
+        virtual void visit(html_fieldset_elem &elem) = 0;
+        virtual void visit(html_figcaption_elem &elem) = 0;
+        virtual void visit(html_figure_elem &elem) = 0;
+        virtual void visit(html_font_elem &elem) = 0;
+        virtual void visit(html_footer_elem &elem) = 0;
+        virtual void visit(html_form_elem &elem) = 0;
+        virtual void visit(html_frame_elem &elem) = 0;
+        virtual void visit(html_frameset_elem &elem) = 0;
+        virtual void visit(html_h1_elem &elem) = 0;
+        virtual void visit(html_h2_elem &elem) = 0;
+        virtual void visit(html_h3_elem &elem) = 0;
+        virtual void visit(html_h4_elem &elem) = 0;
+        virtual void visit(html_h5_elem &elem) = 0;
+        virtual void visit(html_h6_elem &elem) = 0;
+        virtual void visit(html_head_elem &elem) = 0;
+        virtual void visit(html_header_elem &elem) = 0;
+        virtual void visit(html_hgroup_elem &elem) = 0;
+        virtual void visit(html_hr_elem &elem) = 0;
         virtual void visit(html_html_elem &elem) = 0;
-
-        /**
-         * visit text element:
-         *
-         * args:
-         *  @elem: text element
-         *
-         * ret:
-         *  none
-         */
+        virtual void visit(html_i_elem &elem) = 0;
+        virtual void visit(html_iframe_elem &elem) = 0;
+        virtual void visit(html_img_elem &elem) = 0;
+        virtual void visit(html_input_elem &elem) = 0;
+        virtual void visit(html_ins_elem &elem) = 0;
+        virtual void visit(html_kbd_elem &elem) = 0;
+        virtual void visit(html_label_elem &elem) = 0;
+        virtual void visit(html_legend_elem &elem) = 0;
+        virtual void visit(html_li_elem &elem) = 0;
+        virtual void visit(html_link_elem &elem) = 0;
+        virtual void visit(html_main_elem &elem) = 0;
+        virtual void visit(html_map_elem &elem) = 0;
+        virtual void visit(html_mark_elem &elem) = 0;
+        virtual void visit(html_menu_elem &elem) = 0;
+        virtual void visit(html_meta_elem &elem) = 0;
+        virtual void visit(html_meter_elem &elem) = 0;
+        virtual void visit(html_nav_elem &elem) = 0;
+        virtual void visit(html_noframes_elem &elem) = 0;
+        virtual void visit(html_noscript_elem &elem) = 0;
+        virtual void visit(html_object_elem &elem) = 0;
+        virtual void visit(html_ol_elem &elem) = 0;
+        virtual void visit(html_optgroup_elem &elem) = 0;
+        virtual void visit(html_option_elem &elem) = 0;
+        virtual void visit(html_output_elem &elem) = 0;
+        virtual void visit(html_p_elem &elem) = 0;
+        virtual void visit(html_param_elem &elem) = 0;
+        virtual void visit(html_picture_elem &elem) = 0;
+        virtual void visit(html_pre_elem &elem) = 0;
+        virtual void visit(html_progress_elem &elem) = 0;
+        virtual void visit(html_q_elem &elem) = 0;
+        virtual void visit(html_rp_elem &elem) = 0;
+        virtual void visit(html_rt_elem &elem) = 0;
+        virtual void visit(html_ruby_elem &elem) = 0;
+        virtual void visit(html_s_elem &elem) = 0;
+        virtual void visit(html_samp_elem &elem) = 0;
+        virtual void visit(html_script_elem &elem) = 0;
+        virtual void visit(html_search_elem &elem) = 0;
+        virtual void visit(html_section_elem &elem) = 0;
+        virtual void visit(html_select_elem &elem) = 0;
+        virtual void visit(html_small_elem &elem) = 0;
+        virtual void visit(html_source_elem &elem) = 0;
+        virtual void visit(html_span_elem &elem) = 0;
+        virtual void visit(html_strike_elem &elem) = 0;
+        virtual void visit(html_strong_elem &elem) = 0;
+        virtual void visit(html_style_elem &elem) = 0;
+        virtual void visit(html_sub_elem &elem) = 0;
+        virtual void visit(html_summary_elem &elem) = 0;
+        virtual void visit(html_sup_elem &elem) = 0;
+        virtual void visit(html_svg_elem &elem) = 0;
+        virtual void visit(html_table_elem &elem) = 0;
+        virtual void visit(html_tbody_elem &elem) = 0;
+        virtual void visit(html_td_elem &elem) = 0;
+        virtual void visit(html_template_elem &elem) = 0;
+        virtual void visit(html_textarea_elem &elem) = 0;
+        virtual void visit(html_tfoot_elem &elem) = 0;
+        virtual void visit(html_th_elem &elem) = 0;
+        virtual void visit(html_thead_elem &elem) = 0;
+        virtual void visit(html_time_elem &elem) = 0;
+        virtual void visit(html_title_elem &elem) = 0;
+        virtual void visit(html_tr_elem &elem) = 0;
+        virtual void visit(html_track_elem &elem) = 0;
+        virtual void visit(html_tt_elem &elem) = 0;
+        virtual void visit(html_u_elem &elem) = 0;
+        virtual void visit(html_ul_elem &elem) = 0;
+        virtual void visit(html_var_elem &elem) = 0;
+        virtual void visit(html_video_elem &elem) = 0;
+        virtual void visit(html_wbr_elem &elem) = 0;
         virtual void visit(html_text_elem &elem) = 0;
 };
 
-#endif // HTML_ELEM_VISITOR_H
+#endif // #ifndef HTML_ELEM_VISITOR_H

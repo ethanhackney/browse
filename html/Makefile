@@ -25,21 +25,22 @@ ELEM_SRC = elem/src/internal.cc \
 	   elem/src/text.cc \
 	   elem/src/html.cc \
 	   elem/src/dump.cc \
-	   elem/src/factory.cc
+	   elem/src/factory.cc \
+	   elem/src/a.cc
 
-safe: yy.o $(ELEM_SRC)
-	g++ -std=c++11 $(SFLAGS) -o slow $(ELEM_SRC) main.cc yy.o $(SLDFLAGS)
+safe: yy.o main.cc elem/src/*.cc
+	g++ -std=c++11 $(SFLAGS) -o slow $^ $(SLDFLAGS)
 	rm yy.o
 
 yy.o: lex.yy.c
 	gcc -c -o yy.o lex.yy.c
 
-lex.yy.c: gen/lex.sh tagtab
+lex.yy.c: gen/lex.sh gen/tagtab
 	./gen/lex.sh
 	flex html.l
 
-fast: yy.o $(ELEM_SRC)
-	g++ --std=c++11 $(CFLAGS) -o fast -O3 $(ELEM_SRC) main.cc yy.o $(LDFLAGS)
+fast: yy.o main.cc elem/src/*.cc
+	g++ --std=c++11 $(CFLAGS) -o fast -O3 $^ $(LDFLAGS)
 	rm yy.o
 
 clean:

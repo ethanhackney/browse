@@ -1,10 +1,12 @@
 #!/bin/bash
 
+cd "$(dirname "$0")"
+
 # read in tags
 mapfile -t tags <tagtab
 
-# generate start of html.h
-cat >html.h <<EOF
+# generate start of ../html.h
+cat >../html.h <<EOF
 /* AUTO-GENERATED */
 #ifndef HTML_TT_H
 #define HTML_TT_H
@@ -17,23 +19,23 @@ enum {
 EOF
 
 # generate open tags
-echo -e "\tHTML_TT_TAG_OPEN_START, /* start of open tags */" >>html.h
+echo -e "\tHTML_TT_TAG_OPEN_START, /* start of open tags */" >>../html.h
 for tag in "${tags[@]}"; do
-  echo -e "\tHTML_TT_${tag^^}_OPEN, /* <${tag}> */" >>html.h
+  echo -e "\tHTML_TT_${tag^^}_OPEN, /* <${tag}> */" >>../html.h
 done
-echo -e "\tHTML_TT_COMMENT_OPEN, /* <!-- */" >>html.h
-echo -e "\tHTML_TT_TAG_OPEN_END, /* end of open tags */" >>html.h
+echo -e "\tHTML_TT_COMMENT_OPEN, /* <!-- */" >>../html.h
+echo -e "\tHTML_TT_TAG_OPEN_END, /* end of open tags */" >>../html.h
 
 # generate close tags
-echo -e "\tHTML_TT_TAG_CLOSE_START, /* start of close tags */" >>html.h
+echo -e "\tHTML_TT_TAG_CLOSE_START, /* start of close tags */" >>../html.h
 for tag in "${tags[@]}"; do
-  echo -e "\tHTML_TT_${tag^^}_CLOSE, /* </${tag}> */" >>html.h
+  echo -e "\tHTML_TT_${tag^^}_CLOSE, /* </${tag}> */" >>../html.h
 done
-echo -e "\tHTML_TT_COMMENT_CLOSE, /* --> */" >>html.h
-echo -e "\tHTML_TT_TAG_CLOSE_END, /* end of close tags */" >>html.h
+echo -e "\tHTML_TT_COMMENT_CLOSE, /* --> */" >>../html.h
+echo -e "\tHTML_TT_TAG_CLOSE_END, /* end of close tags */" >>../html.h
 
-# generate end of html.h
-cat >>html.h <<EOF
+# generate end of ../html.h
+cat >>../html.h <<EOF
         HTML_TT_TAG_END, /* end of tags */
         HTML_TT_OPEN_DONE, /* done with opening tag? */
         HTML_TT_TEXT, /* regular text */
@@ -74,8 +76,8 @@ is_err(int tt)
 #endif /* #ifndef HTML_TT_H */
 EOF
 
-# generate start of html.l
-cat >html.l <<EOF
+# generate start of ../html.l
+cat >../html.l <<EOF
 /* AUTO-GENERATED */
 
 %{
@@ -98,13 +100,13 @@ EOF
 
 # generate flex for close tag
 for tag in "${tags[@]}"; do
-  echo "\"</${tag}>\" { return  HTML_TT_${tag^^}_CLOSE; }" >>html.l
+  echo "\"</${tag}>\" { return  HTML_TT_${tag^^}_CLOSE; }" >>../html.l
 done
-echo '"<!--" { return HTML_TT_COMMENT_OPEN; }' >>html.l
+echo '"<!--" { return HTML_TT_COMMENT_OPEN; }' >>../html.l
 
 # generate flex for open tag
 for tag in "${tags[@]}"; do
-  cat >>html.l <<EOF
+  cat >>../html.l <<EOF
 "<${tag}" {
         in_open_tag = true;
         return HTML_TT_${tag^^}_OPEN;
@@ -112,7 +114,7 @@ for tag in "${tags[@]}"; do
 EOF
 done
 
-cat >>html.l <<EOF
+cat >>../html.l <<EOF
 "-->" { return HTML_TT_COMMENT_CLOSE; }
 ">" {
         in_open_tag = false;
@@ -126,8 +128,8 @@ cat >>html.l <<EOF
 }
 EOF
 
-# generate end of html.l
-cat >>html.l <<EOF
+# generate end of ../html.l
+cat >>../html.l <<EOF
 %%
 
 int yywrap(void)
