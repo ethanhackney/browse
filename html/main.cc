@@ -16,7 +16,7 @@ int yylex(void);
 static const std::unordered_map<int,std::unordered_set<int>> tagattrs {
 };
 
-static const std::unordered_map<int,int> enders {
+static const std::unordered_map<int,int> tagenders {
         { HTML_TT_TAG_A_OPEN, HTML_TT_TAG_A_CLOSE },
         { HTML_TT_TAG_ABBR_OPEN, HTML_TT_TAG_ABBR_CLOSE },
         { HTML_TT_TAG_ACRONYM_OPEN, HTML_TT_TAG_ACRONYM_CLOSE },
