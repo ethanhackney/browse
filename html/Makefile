@@ -34,7 +34,7 @@ lex.yy.c: gen/lex.sh gen/tagtab gen/attrtab
 	./gen/lex.sh
 	flex html.l
 
-fast: yy.o main.cc elem/src/*.cc
+fast: yy.o main.cc $(ELEM_OBJ)
 	g++ --std=c++11 $(CFLAGS) -o fast -O3 $^ $(LDFLAGS)
 	rm yy.o
 

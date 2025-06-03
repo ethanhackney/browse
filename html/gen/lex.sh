@@ -105,6 +105,7 @@ cat >../html.l <<EOF
 #include "html.h"
 #include <stdbool.h>
 
+/* are we in a tag? */
 static bool in_open_tag = false;
 %}
 
