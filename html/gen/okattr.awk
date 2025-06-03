@@ -1,9 +1,6 @@
 #!/usr/bin/awk -f
 
 {
-  if (length($1) > maxlen)
-    maxlen = length($1)
-
   delim = ""
   for (i = 2; i <= NF; i++) {
     if ($i != "*")
@@ -31,7 +28,7 @@ END {
   for (tag in tags) {
     printf("[TAB_IDX(HTML_TT_TAG_%s_OPEN)] = {\n", toupper(tag))
     for (i = 1; i <= nattrs_ok[tag]; i++)
-      printf("\t[ATTR_IDX(%s)] = true,\n", attrs_ok[tag,i])
+      printf("\t[ATTR_IDX(HTML_TT_ATTR_%s)] = true,\n", toupper(attrs_ok[tag,i]))
     printf("},\n")
   }
 }
