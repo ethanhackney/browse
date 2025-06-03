@@ -16,6 +16,7 @@ cat >../html.h <<EOF
 /* html token types */
 enum {
         HTML_TT_TAG_START = 1, /* start of tags */
+        HTML_TT_DOCTYPE, /* <!DOCTYPE */
 EOF
 
 # generate open tags
@@ -103,6 +104,7 @@ for tag in "${tags[@]}"; do
   echo "\"</${tag}>\" { return  HTML_TT_${tag^^}_CLOSE; }" >>../html.l
 done
 echo '"<!--" { return HTML_TT_COMMENT_OPEN; }' >>../html.l
+echo '"<!DOCTYPE" { return HTML_TT_DOCTYPE; }' >>../html.l
 
 # generate flex for open tag
 for tag in "${tags[@]}"; do

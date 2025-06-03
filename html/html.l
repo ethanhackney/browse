@@ -141,6 +141,7 @@ static bool in_open_tag = false;
 "</video>" { return  HTML_TT_VIDEO_CLOSE; }
 "</wbr>" { return  HTML_TT_WBR_CLOSE; }
 "<!--" { return HTML_TT_COMMENT_OPEN; }
+"<!DOCTYPE" { return HTML_TT_DOCTYPE; }
 "<a" {
         in_open_tag = true;
         return HTML_TT_A_OPEN;

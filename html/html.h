@@ -7,6 +7,7 @@
 /* html token types */
 enum {
         HTML_TT_TAG_START = 1, /* start of tags */
+        HTML_TT_DOCTYPE, /* <!DOCTYPE */
 	HTML_TT_TAG_OPEN_START, /* start of open tags */
 	HTML_TT_A_OPEN, /* <a> */
 	HTML_TT_ABBR_OPEN, /* <abbr> */
