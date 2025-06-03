@@ -46,4 +46,4 @@ obj/%.o: elem/src/%.cc
 	g++ --std=c++11 $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f obj/*.o slow fast yy.o lex.yy.c
+	rm -rf obj slow fast yy.o lex.yy.c
