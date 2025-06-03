@@ -1,0 +1,10 @@
+accept         form input
+accept_charset form
+accesskey      *
+action         iframe
+alt            area img input
+as             link
+async          script
+autocapitalize *
+autocomplete   form input select textarea
+autoplay       audio video
