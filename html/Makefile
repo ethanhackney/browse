@@ -23,18 +23,21 @@ SLDFLAGS = $(LDFLAGS) -fsanitize=address,undefined
 ELEM_SRC = $(wildcard elem/src/*.cc)
 ELEM_OBJ = $(ELEM_SRC:elem/src/%.cc=obj/%.o)
 
-safe: yy.o main.cc $(ELEM_OBJ)
+safe: yy.o main.cc $(ELEM_OBJ) obj/tabs.o
 	g++ -std=c++11 $(SFLAGS) -o slow $^ $(SLDFLAGS)
 	rm yy.o
 
+obj/tabs.o: tabs.c
+	gcc $(CFLAGS) -c -o $@ $^
+
 yy.o: lex.yy.c
-	gcc -c -o yy.o lex.yy.c
+	gcc -c -o $@ $^
 
 lex.yy.c: gen/lex.sh gen/tagtab gen/attrtab
 	./gen/lex.sh
 	flex html.l
 
-fast: yy.o main.cc $(ELEM_OBJ)
+fast: yy.o main.cc $(ELEM_OBJ) obj/tabs.o
 	g++ --std=c++11 $(CFLAGS) -o fast -O3 $^ $(LDFLAGS)
 	rm yy.o
 
