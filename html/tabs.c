@@ -30,11 +30,11 @@ static const int tag_enders[NR_OPEN] = {
 bool
 attr_ok(int tag, int attr)
 {
-        return tag_attrs[tag][attr];
+        return tag_attrs[TAG_IDX(tag)][ATTR_IDX(attr)];
 }
 
 int
 tag_end(int open)
 {
-        return tag_enders[open];
+        return tag_enders[TAG_IDX(open)];
 }
