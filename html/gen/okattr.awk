@@ -1,8 +1,8 @@
 #!/usr/bin/awk -f
 
-# +================+
-# | data structures|
-# +================+
+# +===============+
+# |data structures|
+# +===============+
 # 
 # dag: directed acylic graph
 #   maps attributes to tags that allow that attribute
