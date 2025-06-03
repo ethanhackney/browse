@@ -28,7 +28,7 @@ safe: yy.o main.cc elem/src/*.cc
 yy.o: lex.yy.c
 	gcc -c -o yy.o lex.yy.c
 
-lex.yy.c: gen/lex.sh gen/tagtab
+lex.yy.c: gen/lex.sh gen/tagtab gen/attrtab
 	./gen/lex.sh
 	flex html.l
 
