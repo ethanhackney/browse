@@ -94,6 +94,13 @@ is_err(int tt)
         return HTML_TT_ERR_START < tt && tt < HTML_TT_ERR_END;
 }
 
+/* test if attribute token */
+static inline bool
+is_attr(int tt)
+{
+        return HTML_TT_ATTR_START < tt && tt < HTML_TT_ATTR_END;
+}
+
 #endif /* #ifndef HTML_TT_H */
 EOF
 

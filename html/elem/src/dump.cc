@@ -59,6 +59,7 @@
 #include "../include/html.h"
 #include "../include/i.h"
 #include "../include/iframe.h"
+#include "../include/image.h"
 #include "../include/img.h"
 #include "../include/input.h"
 #include "../include/ins.h"
@@ -70,6 +71,7 @@
 #include "../include/main.h"
 #include "../include/map.h"
 #include "../include/mark.h"
+#include "../include/marquee.h"
 #include "../include/menu.h"
 #include "../include/meta.h"
 #include "../include/meter.h"
@@ -553,6 +555,11 @@ void html_elem_dump_visitor::visit(const html_iframe_elem &elem)
         dump_internal_node("iframe", elem);
 }
 
+void html_elem_dump_visitor::visit(const html_image_elem &elem)
+{
+        dump_internal_node("image", elem);
+}
+
 void html_elem_dump_visitor::visit(const html_img_elem &elem)
 {
         dump_internal_node("img", elem);
@@ -606,6 +613,11 @@ void html_elem_dump_visitor::visit(const html_map_elem &elem)
 void html_elem_dump_visitor::visit(const html_mark_elem &elem)
 {
         dump_internal_node("mark", elem);
+}
+
+void html_elem_dump_visitor::visit(const html_marquee_elem &elem)
+{
+        dump_internal_node("marquee", elem);
 }
 
 void html_elem_dump_visitor::visit(const html_menu_elem &elem)

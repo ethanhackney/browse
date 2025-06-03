@@ -68,6 +68,7 @@ enum {
 	HTML_TT_TAG_HTML_OPEN, /* <html> */
 	HTML_TT_TAG_I_OPEN, /* <i> */
 	HTML_TT_TAG_IFRAME_OPEN, /* <iframe> */
+	HTML_TT_TAG_IMAGE_OPEN, /* <image> */
 	HTML_TT_TAG_IMG_OPEN, /* <img> */
 	HTML_TT_TAG_INPUT_OPEN, /* <input> */
 	HTML_TT_TAG_INS_OPEN, /* <ins> */
@@ -79,6 +80,7 @@ enum {
 	HTML_TT_TAG_MAIN_OPEN, /* <main> */
 	HTML_TT_TAG_MAP_OPEN, /* <map> */
 	HTML_TT_TAG_MARK_OPEN, /* <mark> */
+	HTML_TT_TAG_MARQUEE_OPEN, /* <marquee> */
 	HTML_TT_TAG_MENU_OPEN, /* <menu> */
 	HTML_TT_TAG_META_OPEN, /* <meta> */
 	HTML_TT_TAG_METER_OPEN, /* <meter> */
@@ -196,6 +198,7 @@ enum {
 	HTML_TT_TAG_HTML_CLOSE, /* </html> */
 	HTML_TT_TAG_I_CLOSE, /* </i> */
 	HTML_TT_TAG_IFRAME_CLOSE, /* </iframe> */
+	HTML_TT_TAG_IMAGE_CLOSE, /* </image> */
 	HTML_TT_TAG_IMG_CLOSE, /* </img> */
 	HTML_TT_TAG_INPUT_CLOSE, /* </input> */
 	HTML_TT_TAG_INS_CLOSE, /* </ins> */
@@ -207,6 +210,7 @@ enum {
 	HTML_TT_TAG_MAIN_CLOSE, /* </main> */
 	HTML_TT_TAG_MAP_CLOSE, /* </map> */
 	HTML_TT_TAG_MARK_CLOSE, /* </mark> */
+	HTML_TT_TAG_MARQUEE_CLOSE, /* </marquee> */
 	HTML_TT_TAG_MENU_CLOSE, /* </menu> */
 	HTML_TT_TAG_META_CLOSE, /* </meta> */
 	HTML_TT_TAG_METER_CLOSE, /* </meter> */
@@ -297,13 +301,14 @@ enum {
 	HTML_TT_ATTR_DECODING, /* decoding */
 	HTML_TT_ATTR_DEFAULT, /* default */
 	HTML_TT_ATTR_DEFER, /* defer */
+	HTML_TT_ATTR_DIR, /* dir */
 	HTML_TT_ATTR_DIRNAME, /* dirname */
 	HTML_TT_ATTR_DISABLED, /* disabled */
 	HTML_TT_ATTR_DOWNLOAD, /* download */
 	HTML_TT_ATTR_DRAGGABLE, /* draggable */
+	HTML_TT_ATTR_ELEMENTTIMING, /* elementtiming */
 	HTML_TT_ATTR_ENCTYPE, /* enctype */
 	HTML_TT_ATTR_ENTERKEYHINT, /* enterkeyhint */
-	HTML_TT_ATTR_ELEMENTTIMING, /* elementtiming */
 	HTML_TT_ATTR_FOR, /* for */
 	HTML_TT_ATTR_FORM, /* form */
 	HTML_TT_ATTR_FORMACTION, /* formaction */
@@ -319,25 +324,25 @@ enum {
 	HTML_TT_ATTR_HREFLANG, /* hreflang */
 	HTML_TT_ATTR_HTTP_EQUIV, /* http-equiv */
 	HTML_TT_ATTR_ID, /* id */
+	HTML_TT_ATTR_INPUTMODE, /* inputmode */
 	HTML_TT_ATTR_INTEGRITY, /* integrity */
 	HTML_TT_ATTR_INTRINSICSIZE, /* intrinsicsize */
-	HTML_TT_ATTR_INPUTMODE, /* inputmode */
 	HTML_TT_ATTR_ISMAP, /* ismap */
 	HTML_TT_ATTR_ITEMPROP, /* itemprop */
 	HTML_TT_ATTR_KIND, /* kind */
 	HTML_TT_ATTR_LABEL, /* label */
 	HTML_TT_ATTR_LANG, /* lang */
 	HTML_TT_ATTR_LANGUAGE, /* language */
-	HTML_TT_ATTR_LOADING, /* loading */
 	HTML_TT_ATTR_LIST, /* list */
+	HTML_TT_ATTR_LOADING, /* loading */
 	HTML_TT_ATTR_LOOP, /* loop */
 	HTML_TT_ATTR_LOW, /* low */
 	HTML_TT_ATTR_MAX, /* max */
 	HTML_TT_ATTR_MAXLENGTH, /* maxlength */
-	HTML_TT_ATTR_MINLENGTH, /* minlength */
 	HTML_TT_ATTR_MEDIA, /* media */
 	HTML_TT_ATTR_METHOD, /* method */
 	HTML_TT_ATTR_MIN, /* min */
+	HTML_TT_ATTR_MINLENGTH, /* minlength */
 	HTML_TT_ATTR_MULTIPLE, /* multiple */
 	HTML_TT_ATTR_MUTED, /* muted */
 	HTML_TT_ATTR_NAME, /* name */
@@ -418,6 +423,13 @@ static inline bool
 is_err(int tt)
 {
         return HTML_TT_ERR_START < tt && tt < HTML_TT_ERR_END;
+}
+
+/* test if attribute token */
+static inline bool
+is_attr(int tt)
+{
+        return HTML_TT_ATTR_START < tt && tt < HTML_TT_ATTR_END;
 }
 
 #endif /* #ifndef HTML_TT_H */

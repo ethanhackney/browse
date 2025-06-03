@@ -26,8 +26,10 @@ int main(void)
                 try {
                         auto hp = f.html();
 
-                        while ((tt = yylex()) != HTML_TT_TAG_OPEN_DONE)
-                                ;
+                        while ((tt = yylex()) != HTML_TT_TAG_OPEN_DONE) {
+                                if (!is_attr(tt))
+                                        puts("error");
+                        }
 
                         while ((tt = yylex()) == HTML_TT_TEXT)
                                 hp.get()->append_child(f.text(*yytext));

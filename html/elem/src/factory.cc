@@ -297,6 +297,11 @@ std::shared_ptr<html_iframe_elem> html_elem_factory::iframe(void)
         return std::shared_ptr<html_iframe_elem> {new html_iframe_elem{}};
 }
 
+std::shared_ptr<html_image_elem> html_elem_factory::image(void)
+{
+        return std::shared_ptr<html_image_elem> {new html_image_elem{}};
+}
+
 std::shared_ptr<html_img_elem> html_elem_factory::img(void)
 {
         return std::shared_ptr<html_img_elem> {new html_img_elem{}};
@@ -350,6 +355,11 @@ std::shared_ptr<html_map_elem> html_elem_factory::map(void)
 std::shared_ptr<html_mark_elem> html_elem_factory::mark(void)
 {
         return std::shared_ptr<html_mark_elem> {new html_mark_elem{}};
+}
+
+std::shared_ptr<html_marquee_elem> html_elem_factory::marquee(void)
+{
+        return std::shared_ptr<html_marquee_elem> {new html_marquee_elem{}};
 }
 
 std::shared_ptr<html_menu_elem> html_elem_factory::menu(void)

@@ -76,6 +76,7 @@ static bool in_open_tag = false;
 "</html>" { return  HTML_TT_TAG_HTML_CLOSE; }
 "</i>" { return  HTML_TT_TAG_I_CLOSE; }
 "</iframe>" { return  HTML_TT_TAG_IFRAME_CLOSE; }
+"</image>" { return  HTML_TT_TAG_IMAGE_CLOSE; }
 "</img>" { return  HTML_TT_TAG_IMG_CLOSE; }
 "</input>" { return  HTML_TT_TAG_INPUT_CLOSE; }
 "</ins>" { return  HTML_TT_TAG_INS_CLOSE; }
@@ -87,6 +88,7 @@ static bool in_open_tag = false;
 "</main>" { return  HTML_TT_TAG_MAIN_CLOSE; }
 "</map>" { return  HTML_TT_TAG_MAP_CLOSE; }
 "</mark>" { return  HTML_TT_TAG_MARK_CLOSE; }
+"</marquee>" { return  HTML_TT_TAG_MARQUEE_CLOSE; }
 "</menu>" { return  HTML_TT_TAG_MENU_CLOSE; }
 "</meta>" { return  HTML_TT_TAG_META_CLOSE; }
 "</meter>" { return  HTML_TT_TAG_METER_CLOSE; }
@@ -382,6 +384,10 @@ static bool in_open_tag = false;
         in_open_tag = true;
         return HTML_TT_TAG_IFRAME_OPEN;
 }
+"<image" {
+        in_open_tag = true;
+        return HTML_TT_TAG_IMAGE_OPEN;
+}
 "<img" {
         in_open_tag = true;
         return HTML_TT_TAG_IMG_OPEN;
@@ -425,6 +431,10 @@ static bool in_open_tag = false;
 "<mark" {
         in_open_tag = true;
         return HTML_TT_TAG_MARK_OPEN;
+}
+"<marquee" {
+        in_open_tag = true;
+        return HTML_TT_TAG_MARQUEE_OPEN;
 }
 "<menu" {
         in_open_tag = true;
@@ -675,13 +685,14 @@ static bool in_open_tag = false;
 "decoding" { return HTML_TT_ATTR_DECODING; }
 "default" { return HTML_TT_ATTR_DEFAULT; }
 "defer" { return HTML_TT_ATTR_DEFER; }
+"dir" { return HTML_TT_ATTR_DIR; }
 "dirname" { return HTML_TT_ATTR_DIRNAME; }
 "disabled" { return HTML_TT_ATTR_DISABLED; }
 "download" { return HTML_TT_ATTR_DOWNLOAD; }
 "draggable" { return HTML_TT_ATTR_DRAGGABLE; }
+"elementtiming" { return HTML_TT_ATTR_ELEMENTTIMING; }
 "enctype" { return HTML_TT_ATTR_ENCTYPE; }
 "enterkeyhint" { return HTML_TT_ATTR_ENTERKEYHINT; }
-"elementtiming" { return HTML_TT_ATTR_ELEMENTTIMING; }
 "for" { return HTML_TT_ATTR_FOR; }
 "form" { return HTML_TT_ATTR_FORM; }
 "formaction" { return HTML_TT_ATTR_FORMACTION; }
@@ -697,25 +708,25 @@ static bool in_open_tag = false;
 "hreflang" { return HTML_TT_ATTR_HREFLANG; }
 "http-equiv" { return HTML_TT_ATTR_HTTP_EQUIV; }
 "id" { return HTML_TT_ATTR_ID; }
+"inputmode" { return HTML_TT_ATTR_INPUTMODE; }
 "integrity" { return HTML_TT_ATTR_INTEGRITY; }
 "intrinsicsize" { return HTML_TT_ATTR_INTRINSICSIZE; }
-"inputmode" { return HTML_TT_ATTR_INPUTMODE; }
 "ismap" { return HTML_TT_ATTR_ISMAP; }
 "itemprop" { return HTML_TT_ATTR_ITEMPROP; }
 "kind" { return HTML_TT_ATTR_KIND; }
 "label" { return HTML_TT_ATTR_LABEL; }
 "lang" { return HTML_TT_ATTR_LANG; }
 "language" { return HTML_TT_ATTR_LANGUAGE; }
-"loading" { return HTML_TT_ATTR_LOADING; }
 "list" { return HTML_TT_ATTR_LIST; }
+"loading" { return HTML_TT_ATTR_LOADING; }
 "loop" { return HTML_TT_ATTR_LOOP; }
 "low" { return HTML_TT_ATTR_LOW; }
 "max" { return HTML_TT_ATTR_MAX; }
 "maxlength" { return HTML_TT_ATTR_MAXLENGTH; }
-"minlength" { return HTML_TT_ATTR_MINLENGTH; }
 "media" { return HTML_TT_ATTR_MEDIA; }
 "method" { return HTML_TT_ATTR_METHOD; }
 "min" { return HTML_TT_ATTR_MIN; }
+"minlength" { return HTML_TT_ATTR_MINLENGTH; }
 "multiple" { return HTML_TT_ATTR_MULTIPLE; }
 "muted" { return HTML_TT_ATTR_MUTED; }
 "name" { return HTML_TT_ATTR_NAME; }

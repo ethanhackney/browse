@@ -27,8 +27,9 @@ safe: yy.o main.cc $(ELEM_OBJ) obj/tabs.o
 	g++ -std=c++11 $(SFLAGS) -o slow $^ $(SLDFLAGS)
 	rm yy.o
 
-obj/tabs.o: tabs.c
-	gcc $(CFLAGS) -c -o $@ $^
+obj/tabs.o: gen/okattr.awk
+	./gen/okattr.awk gen/okattrtab >tabs.c
+	gcc $(CFLAGS) -c -o $@ tabs.c
 
 yy.o: lex.yy.c
 	gcc -c -o $@ $^

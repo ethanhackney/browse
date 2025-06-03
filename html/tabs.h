@@ -16,16 +16,4 @@
  */
 bool attr_ok(int tag, int attr);
 
-/**
- * get end tag token type from open tag type:
- *
- * args:
- *  @open: open tag token type
- *
- * ret:
- *  @success: end tag token type
- *  @failure: does not
- */
-int tag_end(int open);
-
 #endif /* #ifndef HTML_TABS_H */

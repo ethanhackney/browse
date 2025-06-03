@@ -61,6 +61,7 @@
 #include "html.h"
 #include "i.h"
 #include "iframe.h"
+#include "image.h"
 #include "img.h"
 #include "input.h"
 #include "ins.h"
@@ -72,6 +73,7 @@
 #include "main.h"
 #include "map.h"
 #include "mark.h"
+#include "marquee.h"
 #include "menu.h"
 #include "meta.h"
 #include "meter.h"
@@ -190,6 +192,7 @@ public:
 	std::shared_ptr<html_html_elem> html(void);
 	std::shared_ptr<html_i_elem> i(void);
 	std::shared_ptr<html_iframe_elem> iframe(void);
+	std::shared_ptr<html_image_elem> image(void);
 	std::shared_ptr<html_img_elem> img(void);
 	std::shared_ptr<html_input_elem> input(void);
 	std::shared_ptr<html_ins_elem> ins(void);
@@ -201,6 +204,7 @@ public:
 	std::shared_ptr<html_main_elem> main_elem(void);
 	std::shared_ptr<html_map_elem> map(void);
 	std::shared_ptr<html_mark_elem> mark(void);
+	std::shared_ptr<html_marquee_elem> marquee(void);
 	std::shared_ptr<html_menu_elem> menu(void);
 	std::shared_ptr<html_meta_elem> meta(void);
 	std::shared_ptr<html_meter_elem> meter(void);

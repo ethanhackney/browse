@@ -94,6 +94,7 @@ public:
 	void visit(const html_html_elem &elem);
 	void visit(const html_i_elem &elem);
 	void visit(const html_iframe_elem &elem);
+	void visit(const html_image_elem &elem);
 	void visit(const html_img_elem &elem);
 	void visit(const html_input_elem &elem);
 	void visit(const html_ins_elem &elem);
@@ -105,6 +106,7 @@ public:
 	void visit(const html_main_elem &elem);
 	void visit(const html_map_elem &elem);
 	void visit(const html_mark_elem &elem);
+	void visit(const html_marquee_elem &elem);
 	void visit(const html_menu_elem &elem);
 	void visit(const html_meta_elem &elem);
 	void visit(const html_meter_elem &elem);

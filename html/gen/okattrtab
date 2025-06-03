@@ -1,10 +1,114 @@
-accept         form input
-accept_charset form
-accesskey      *
-action         iframe
-alt            area img input
-as             link
-async          script
-autocapitalize *
-autocomplete   form input select textarea
-autoplay       audio video
+accept          form input
+accept_charset  form
+accesskey       *
+action          iframe
+alt             area img input
+as              link
+async           script
+autocapitalize  *
+autocomplete    form input select textarea
+autoplay        audio video
+background      body table td th
+bgcolor         body col colgroup marquee table tbody tfoot td th tr
+border          img object table
+capture         input
+charset         meta
+checked         input
+cite            blockquote del ins q
+class           *
+color           font hr
+cols            textarea
+colspan         td th
+content         meta
+contenteditable *
+controls        audio video
+coords          area
+crossorigin     audio img link script video
+data            object
+datetime        del ins time
+decoding        img
+default         track
+defer           script
+dir             *
+dirname         input textarea
+disabled        button fieldset input optgroup option select textarea
+download        a area
+draggable       *
+elementtiming   img image svg video
+enctype         form
+enterkeyhint    textarea
+for             label output
+form            button fieldset input label meter object output progress select textarea
+formaction      input button
+formenctype     button input
+formmethod      button input
+formnovalidate  button input
+formtarget      button input
+headers         td th
+height          canvas embed iframe img input object video
+hidden          *
+high            meter
+href            a area base link
+hreflang        a link
+http_equiv      meta
+id              *
+inputmode       textarea
+integrity       link script
+ismap           img
+itemprop        *
+kind            track
+label           optgroup option track
+lang            *
+list            input
+loading         img iframe
+loop            audio marquee video
+low             meter
+max             input meter progress
+maxlength       input textarea
+media           a area link source style
+method          form
+min             input meter
+minlength       input textarea
+multiple        input select
+muted           audio video
+name            button form fieldset iframe input object output select textarea map meta param
+novalidate      form
+open            details dialog
+optimum         meter
+ping            a area
+placeholder     input textarea
+playsinline     video
+poster          video
+preload         audio video
+readonly        input textarea
+referrerpolicy  a area iframe img link script
+rel             a area link
+required        input select textarea
+reversed        ol
+role            *
+rows            textarea
+rowspan         td th
+sandbox         iframe
+scope           th
+selected        option
+shape           a area
+size            input select
+sizes           link img source
+slot            *
+span            col colgroup
+spellcheck      *
+src             audio embed iframe img input script source track video
+srcdoc          iframe
+srclang         track
+srcset          img source
+start           ol
+step            input
+style           *
+tabindex        *
+target          a area base form
+title           *
+type            button input embed object ol script source style menu link
+usemap          img input object
+value           button data input li meter option progress param
+width           canvas embed iframe img input object video
+wrap            textarea
