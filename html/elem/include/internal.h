@@ -23,6 +23,7 @@ public:
         const std::string &attr_get_by_idx(std::size_t i) const;
         const std::string &attr_get_by_type(int type) const;
         void attr_add(int type, const std::string &val);
+        int attr_get(std::size_t i) const;
         void rm_child(size_t i);
 };
 

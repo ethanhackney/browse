@@ -87,7 +87,7 @@ EOF
 
 # generate dump visitor visit method for each element type
 for elem in "${elems[@]}"; do
-  echo -e "        void visit(const html_${elem}_elem &elem);" >>$INCLUDE/dump.h
+  echo "        void visit(const html_${elem}_elem &elem);" >>$INCLUDE/dump.h
 done
 
 # finalize dump header
@@ -112,6 +112,7 @@ done
 # generate the non automatic code
 cat >>$SRC/dump.cc <<EOF
 #include "../include/dump.h"
+#include "../../html.h"
 #include <iostream>
 #include <string>
 #include <cstdlib>
@@ -189,6 +190,29 @@ void html_elem_dump_visitor::dump_internal_node(const std::string &t,
 
         _indent += 2;
         type(_os, _indent, t);
+
+        indent_print(_os, _indent, "\"attributes\": {\n");
+        _indent += 2;
+        for (std::size_t i = 0; i < elem.attr_len(); i++) {
+                auto attrtype = elem.attr_get(i);
+                auto name = std::string{attr_name(attrtype)};
+                auto val = elem.attr_get_by_idx(i);
+
+                indent(_os, _indent);
+
+                std::cout << "\"" << name << "\": ";
+                if (val == "")
+                        std::cout << "true";
+                else
+                        std::cout << "\"" << val << "\"";
+
+                if (i != elem.attr_len() - 1)
+                        std::cout << ",";
+
+                std::cout << "\n";
+        }
+        _indent -= 2;
+        indent_print(_os, _indent, "},\n");
 
         indent_print(_os, _indent, "\"children\": [\n");
         _indent += 2;
@@ -378,7 +402,7 @@ for elem in "${elems[@]}"; do
     fn_name=main_elem
   fi
 
-  echo -e "        std::shared_ptr<html_${elem}_elem> ${fn_name}(void);" >>$INCLUDE/factory.h
+  echo "        std::shared_ptr<html_${elem}_elem> ${fn_name}(void);" >>$INCLUDE/factory.h
 done
 
 # finalize factory header

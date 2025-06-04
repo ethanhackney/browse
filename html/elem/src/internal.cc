@@ -62,3 +62,8 @@ const std::string &html_internal_elem::attr_get_by_type(int type) const
 
         return empty;
 }
+
+int html_internal_elem::attr_get(std::size_t i) const
+{
+        return _attr.at(i);
+}

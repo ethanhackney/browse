@@ -66,6 +66,11 @@ const std::string &html_text_elem::attr_get_by_idx(std::size_t i) const
         return empty;
 }
 
+int html_text_elem::attr_get(std::size_t i) const
+{
+        return 0;
+}
+
 const std::string &html_text_elem::attr_get_by_type(int type) const
 {
         static const std::string empty {""};

@@ -28,6 +28,7 @@ public:
         std::size_t attr_len(void) const;
         const std::string &attr_get_by_idx(std::size_t i) const;
         const std::string &attr_get_by_type(int type) const;
+        int attr_get(std::size_t i) const;
         void attr_add(int type, const std::string &val);
         int c(void) const;
 };

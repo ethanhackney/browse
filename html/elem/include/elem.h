@@ -101,13 +101,24 @@ public:
         virtual std::size_t attr_len(void) const = 0;
 
         /**
+         * get i'th attribute:
+         *
+         * args:
+         *  @i: index of attribute
+         *
+         * ret:
+         *  attribute type
+         */
+        virtual int attr_get(std::size_t i) const = 0;
+
+        /**
          * get attribute value by index:
          *
          * args:
          *  @i: index of attribute
          *
          * ret:
-         *  number of attributes
+         *  attribute value
          */
         virtual const std::string &attr_get_by_idx(std::size_t i) const = 0;
 
@@ -118,7 +129,7 @@ public:
          *  @type: attribute type
          *
          * ret:
-         *  number of attributes
+         *  attribute value
          */
         virtual const std::string &attr_get_by_type(int type) const = 0;
 

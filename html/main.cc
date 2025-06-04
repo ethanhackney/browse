@@ -24,8 +24,11 @@ int main(void)
                         auto tag = tt;
 
                         while ((tt = lex.yylex()) != HTML_TT_TAG_OPEN_DONE) {
-                                if (!attr_ok(tag, tt))
-                                        puts("error");
+                                if (!attr_ok(tag, tt)) {
+                                        puts("no attribute in open tag");
+                                        exit(1);
+                                }
+                                hp.get()->attr_add(tt, "");
                         }
 
                         while ((tt = lex.yylex()) == HTML_TT_TEXT)

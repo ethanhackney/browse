@@ -23,32 +23,38 @@ enum {
 EOF
 
 # tokens
-toks=()
+toks=("EOF")
+toks+=("HTML_TT_TAG_START")
+# attribute keyword map
+declare -A attrmap
 
 # generate open tags
-echo -e "        HTML_TT_TAG_OPEN_START, /* start of open tags */" >>../html.h
-echo -e "        HTML_TT_TAG_DOCTYPE, /* <!DOCTYPE> */" >>../html.h
+echo "        HTML_TT_TAG_OPEN_START, /* start of open tags */" >>../html.h
+echo "        HTML_TT_TAG_DOCTYPE, /* <!DOCTYPE> */" >>../html.h
+toks+=("HTML_TT_TAG_OPEN_START" "HTML_TT_TAG_DOCTYPE")
 for tag in "${tags[@]}"; do
-  echo -e "        HTML_TT_TAG_${tag^^}_OPEN, /* <${tag}> */" >>../html.h
+  echo "        HTML_TT_TAG_${tag^^}_OPEN, /* <${tag}> */" >>../html.h
   toks+=("HTML_TT_TAG_${tag^^}_OPEN")
 done
-echo -e "        HTML_TT_TAG_COMMENT_OPEN, /* <!-- */" >>../html.h
-echo -e "        HTML_TT_TAG_OPEN_END, /* end of open tags */" >>../html.h
+echo "        HTML_TT_TAG_COMMENT_OPEN, /* <!-- */" >>../html.h
+echo "        HTML_TT_TAG_OPEN_END, /* end of open tags */" >>../html.h
 toks+=("HTML_TT_TAG_COMMENT_OPEN" "HTML_TT_TAG_OPEN_END")
 
 # generate close tags
-echo -e "        HTML_TT_TAG_CLOSE_START, /* start of close tags */" >>../html.h
+echo "        HTML_TT_TAG_CLOSE_START, /* start of close tags */" >>../html.h
+toks+=("HTML_TT_TAG_CLOSE_START")
 for tag in "${tags[@]}"; do
-  echo -e "        HTML_TT_TAG_${tag^^}_CLOSE, /* </${tag}> */" >>../html.h
+  echo "        HTML_TT_TAG_${tag^^}_CLOSE, /* </${tag}> */" >>../html.h
   toks+=("HTML_TT_TAG_${tag^^}_CLOSE")
 done
-echo -e "        HTML_TT_TAG_COMMENT_CLOSE, /* --> */" >>../html.h
-echo -e "        HTML_TT_TAG_CLOSE_END, /* end of close tags */" >>../html.h
-echo -e "        HTML_TT_TAG_END, /* end of tags */" >>../html.h
+echo "        HTML_TT_TAG_COMMENT_CLOSE, /* --> */" >>../html.h
+echo "        HTML_TT_TAG_CLOSE_END, /* end of close tags */" >>../html.h
+echo "        HTML_TT_TAG_END, /* end of tags */" >>../html.h
 toks+=("HTML_TT_TAG_COMMENT_CLOSE" "HTML_TT_TAG_CLOSE_END" "HTML_TT_TAG_END")
 
 # generate attributes
-echo -e "        HTML_TT_ATTR_START, /* start of attributes */" >>../html.h
+echo "        HTML_TT_ATTR_START, /* start of attributes */" >>../html.h
+toks+=("HTML_TT_ATTR_START")
 for attr in "${attrs[@]}"; do
   name=$attr
   if [ $attr = 'accept-charset' ]; then
@@ -60,10 +66,19 @@ for attr in "${attrs[@]}"; do
   if [ $attr = 'start' ]; then
     name='START_ATTR'
   fi
-  echo -e "        HTML_TT_ATTR_${name^^}, /* ${attr} */" >>../html.h
+  echo "        HTML_TT_ATTR_${name^^}, /* ${attr} */" >>../html.h
   toks+=("HTML_TT_ATTR_${name^^}")
+  attrmap["HTML_TT_ATTR_${name^^}"]=$attr
 done
-echo -e "        HTML_TT_ATTR_END, /* end of attributes */" >>../html.h
+echo "        HTML_TT_ATTR_END, /* end of attributes */" >>../html.h
+toks+=("HTML_TT_ATTR_END")
+toks+=(
+  "HTML_TT_TAG_OPEN_DONE" 
+  "HTML_TT_TEXT" 
+  "HTML_TT_ERR_START" 
+  "HTML_TT_ERR_TAG_UNTERM" 
+  "HTML_TT_ERR_END"
+)
 
 # generate end of ../html.h
 cat >>../html.h <<EOF
@@ -115,22 +130,34 @@ static inline const char *
 tok_name(int tt)
 {
 EOF
-toks+=(
-  "HTML_TT_TAG_OPEN_DONE"
-  "HTML_TT_TEXT"
-  "HTML_TT_ERR_START"
-  "HTML_TT_ERR_TAG_UNTERM"
-  "HTML_TT_ERR_END"
-)
 
-echo "        static const char *token_names[HTML_TT_COUNT] = {" >>../html.h
+echo "        static const char *const token_names[HTML_TT_COUNT] = {" >>../html.h
 for tok in "${toks[@]}"; do
-  echo -e "        \"$tok\"," >>../html.h
+  echo "                \"$tok\"," >>../html.h
 done
 echo "        };" >>../html.h
 
 cat >>../html.h <<EOF
         return token_names[tt];
+}
+
+static inline const char *
+attr_name(int tt)
+{
+EOF
+
+echo "        static const char *const attr_names[HTML_TT_COUNT] = {" >>../html.h
+for tok in "${toks[@]}"; do
+  if [ -n "${attrmap[$tok]}" ]; then
+    echo "                \"${attrmap[$tok]}\", /* $tok */" >>../html.h
+  else
+    echo "                \"\"," >>../html.h
+  fi
+done
+echo "        };" >>../html.h
+
+cat >>../html.h <<EOF
+        return attr_names[tt];
 }
 
 #endif /* #ifndef HTML_TT_H */
@@ -206,7 +233,11 @@ cat >>../html.ll <<EOF
         in_open_tag = false;
         return HTML_TT_TAG_OPEN_DONE;
 }
-.|\n {
+[ \t\n] {
+        if (!in_open_tag)
+                return HTML_TT_TEXT;
+}
+. {
         if (!in_open_tag)
                 return HTML_TT_TEXT;
 
