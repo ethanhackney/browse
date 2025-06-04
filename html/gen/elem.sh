@@ -6,9 +6,9 @@ INCLUDE=../elem/include
 SRC=../elem/src
 
 # already generated
-# if [ -f $INCLUDE/visitor.h ]; then
-#   exit 0
-# fi
+if [ -f $INCLUDE/visitor.h ]; then
+  exit 0
+fi
 
 # read in tags
 mapfile -t elems <tagtab

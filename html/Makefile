@@ -43,6 +43,7 @@ fast: yy.o main.cc $(ELEM_OBJ) obj/tabs.o
 	rm yy.o
 
 obj/%.o: elem/src/%.cc
+	mkdir -p obj
 	g++ --std=c++11 $(CFLAGS) -c $< -o $@
 
 clean:
