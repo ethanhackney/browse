@@ -28,8 +28,9 @@ safe: yy.o main.cc $(ELEM_OBJ) obj/tabs.o
 	$(CC) $(SFLAGS) -o slow $^ $(SLDFLAGS)
 	rm yy.o
 
-obj/tabs.o: gen/okattr.awk
+obj/tabs.o: gen/okattr.awk gen/ender.awk
 	./gen/okattr.awk gen/okattrtab >tabs.c
+	./gen/ender.awk gen/tagtab >>tabs.c
 	gcc $(CFLAGS) -c -o $@ tabs.c
 
 yy.o: lex.yy.cc

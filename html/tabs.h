@@ -20,6 +20,18 @@ extern "C" {
  */
 bool attr_ok(int tag, int attr);
 
+/**
+ * get end tag for open tag:
+ *
+ * args:
+ *  @tag:  tag token type
+ *
+ * ret:
+ *  @true:  if ok
+ *  @false: if not
+ */
+int tag_ender(int tag);
+
 #ifdef __cplusplus
 }
 #endif
