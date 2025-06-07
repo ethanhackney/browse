@@ -8,11 +8,6 @@ SRC=../elem/src
 # read in tags
 mapfile -t elems <tagtab
 
-# elems=(
-#   a
-#   html
-# )
-
 # generate first part of visitor
 cat >$INCLUDE/visitor.h <<EOF
 // AUTO-GENERATED
