@@ -20,10 +20,9 @@ public:
         void visit(html_elem_visitor &v);
         void visit(html_elem_cvisitor &v) const;
         std::size_t child_len(void) const;
-        std::shared_ptr<html_elem> get_child(size_t i);
-        const std::shared_ptr<html_elem> get_child(std::size_t i) const;
-        const std::shared_ptr<html_elem> get_cchild(std::size_t i) const;
-        void append_child(std::shared_ptr<html_elem> elem);
+        html_elem *get_child(std::size_t i) const;
+        const html_elem *get_cchild(std::size_t i) const;
+        void append_child(std::unique_ptr<html_elem> elem);
         void rm_child(std::size_t i);
         std::size_t attr_len(void) const;
         const std::string &attr_get_by_idx(std::size_t i) const;

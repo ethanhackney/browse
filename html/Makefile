@@ -22,9 +22,10 @@ SFLAGS = $(CFLAGS) -fsanitize=address,undefined
 SLDFLAGS = $(LDFLAGS) -fsanitize=address,undefined
 ELEM_SRC = $(wildcard elem/src/*.cc)
 ELEM_OBJ = $(ELEM_SRC:elem/src/%.cc=obj/%.o)
+CC = g++ -std=c++20
 
 safe: yy.o main.cc $(ELEM_OBJ) obj/tabs.o
-	g++ -std=c++11 $(SFLAGS) -o slow $^ $(SLDFLAGS)
+	$(CC) $(SFLAGS) -o slow $^ $(SLDFLAGS)
 	rm yy.o
 
 obj/tabs.o: gen/okattr.awk
@@ -32,19 +33,19 @@ obj/tabs.o: gen/okattr.awk
 	gcc $(CFLAGS) -c -o $@ tabs.c
 
 yy.o: lex.yy.cc
-	g++ -c -o $@ $^
+	$(CC) -o $@ $^
 
 lex.yy.cc: gen/lex.sh gen/tagtab gen/attrtab
 	./gen/lex.sh
 	flex -o lex.yy.cc html.ll
 
 fast: yy.o main.cc $(ELEM_OBJ) obj/tabs.o
-	g++ --std=c++11 $(CFLAGS) -o fast -O3 $^ $(LDFLAGS)
+	$(CC) $(CFLAGS) -o fast -O3 $^ $(LDFLAGS)
 	rm yy.o
 
 obj/%.o: elem/src/%.cc
 	mkdir -p obj
-	g++ --std=c++11 $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	rm -rf html.l html.h tabs.c obj slow fast yy.o lex.yy.cc html.ll

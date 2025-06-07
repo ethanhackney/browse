@@ -232,7 +232,7 @@ void html_elem_dump_visitor::dump_internal_node(const std::string &t,
         indent_print(_os, _indent, "\"children\": [\n");
         _indent += 2;
         for (std::size_t i = 0; i < elem.child_len(); i++) {
-                elem.get_cchild(i).get()->visit(*this);
+                elem.get_cchild(i)->visit(*this);
                 if (i != elem.child_len() - 1)
                         std::cout << ",";
                 std::cout << "\n";

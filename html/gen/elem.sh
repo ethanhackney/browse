@@ -5,11 +5,6 @@ cd "$(dirname "$0")"
 INCLUDE=../elem/include
 SRC=../elem/src
 
-# already generated
-if [ -f $INCLUDE/visitor.h ]; then
-  exit 0
-fi
-
 # read in tags
 mapfile -t elems <tagtab
 
@@ -217,7 +212,7 @@ void html_elem_dump_visitor::dump_internal_node(const std::string &t,
         indent_print(_os, _indent, "\"children\": [\n");
         _indent += 2;
         for (std::size_t i = 0; i < elem.child_len(); i++) {
-                elem.get_cchild(i).get()->visit(*this);
+                elem.get_cchild(i)->visit(*this);
                 if (i != elem.child_len() - 1)
                         std::cout << ",";
                 std::cout << "\n";
@@ -402,12 +397,12 @@ for elem in "${elems[@]}"; do
     fn_name=main_elem
   fi
 
-  echo "        std::shared_ptr<html_${elem}_elem> ${fn_name}(void);" >>$INCLUDE/factory.h
+  echo "        std::unique_ptr<html_${elem}_elem> ${fn_name}(void);" >>$INCLUDE/factory.h
 done
 
 # finalize factory header
 cat >>$INCLUDE/factory.h <<EOF
-        std::shared_ptr<html_text_elem> text(int c);
+        std::unique_ptr<html_text_elem> text(int c);
 };
 
 #endif // #ifndef HTML_ELEM_FACTORY_H
@@ -434,9 +429,9 @@ for elem in "${elems[@]}"; do
   # generate method
   cat >>$SRC/factory.cc <<EOF
 
-std::shared_ptr<html_${elem}_elem> html_elem_factory::${fn_name}(void)
+std::unique_ptr<html_${elem}_elem> html_elem_factory::${fn_name}(void)
 {
-        return std::shared_ptr<html_${elem}_elem> {new html_${elem}_elem{}};
+        return std::make_unique<html_${elem}_elem>();
 }
 EOF
 done
@@ -444,8 +439,8 @@ done
 # finalize factory source
 cat >>$SRC/factory.cc <<EOF
 
-std::shared_ptr<html_text_elem> html_elem_factory::text(int c)
+std::unique_ptr<html_text_elem> html_elem_factory::text(int c)
 {
-        return std::shared_ptr<html_text_elem> {new html_text_elem{c}};
+        return std::make_unique<html_text_elem>(c);
 }
 EOF
