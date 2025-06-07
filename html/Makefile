@@ -33,7 +33,7 @@ obj/tabs.o: gen/okattr.awk
 	gcc $(CFLAGS) -c -o $@ tabs.c
 
 yy.o: lex.yy.cc
-	$(CC) -o $@ $^
+	$(CC) -c -o $@ $^
 
 lex.yy.cc: gen/lex.sh gen/tagtab gen/attrtab
 	./gen/lex.sh
